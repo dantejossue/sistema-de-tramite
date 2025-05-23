@@ -1,0 +1,380 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: linear-gradient(150deg, #0e2a66, #7bd5ff);
+  height: 100vh;
+}
+
+.logo {
+  height: 90px;
+  width: 90px;
+  padding-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.formulario {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+}
+.formulario h1 {
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 2px solid silver;
+}
+.formulario form {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .username1 {
+  position: relative;
+  margin: 30px 0;
+}
+
+.content-input input,
+.content-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+form .username {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+.username input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.username label {
+  position: absolute;
+  top: 40%;
+  left: 5px;
+  color: #000080;
+  transform: translateY(-170%);
+  font: 16px;
+  pointer-events: none;
+  font-size: 700;
+  transition: 0.5s;
+}
+.username1 label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #000080;
+  transform: translateY(-170%);
+  font: 16px;
+  pointer-events: none;
+  font-size: 700;
+  transition: 0.5s;
+}
+
+.username span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #000080;
+  transition: 0.5s;
+}
+
+.username input:focus ~ span::before,
+.username input:focus ~ span::before {
+  width: 100%;
+}
+.recordar {
+  margin: -5px 0 20px 5px;
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+.recordar a {
+  color: #000080;
+  text-decoration: none;
+}
+.recordar:hover {
+  text-decoration: underline;
+  font-weight: 500;
+}
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+  background: #2e86c1;
+  border-radius: 25px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="submit"]:hover {
+  background: #21618c;
+  transition: 0.5s;
+  font-weight: 500;
+}
+.verif {
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+  background: #2e86c1;
+  border-radius: 25px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.verif:hover {
+  background: #21618c;
+  transition: 0.5s;
+  font-weight: 500;
+}
+.registrar {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+}
+.registrar a {
+  color: #000080;
+  text-decoration: none;
+}
+.registrar:hover {
+  text-decoration: underline;
+}
+
+.username1 select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.username1 select::-ms-expand {
+  display: none;
+}
+
+.username1 select {
+  top: 8px;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 7px 10px;
+  height: 32px;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  background: #f0f0f0;
+  color: black;
+  font-size: 1em;
+  font-family: "Quicksand", sans-serif;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.username1 select:hover {
+  background: #d6f9fa;
+}
+
+/* 
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.username1 i {
+  position: absolute;
+  right: 20px;
+  top: calc(50% - 10px);
+  width: 16px;
+  height: 16px;
+  display: block;
+  border-left: 4px solid #2ac176;
+  border-bottom: 4px solid #2aa3c1;
+  transform: rotate(-45deg); /* Giramos el cuadrado */
+  transition: all 0.25s ease;
+}
+
+.username1:hover i {
+  margin-top: 3px;
+}
+.alert {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 24px;
+  border: 0 solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-heading {
+  color: inherit;
+}
+
+.alert-link {
+  font-weight: 600;
+}
+
+.alert-dismissible .close {
+  position: relative;
+  top: -0.75rem;
+  right: -1.25rem;
+  padding: 0.75rem 1.25rem;
+  color: inherit;
+}
+
+.alert-primary {
+  color: #22567f;
+  background-color: #d9edfd;
+  border-color: #cae6fc;
+}
+
+.alert-primary hr {
+  border-top-color: #b2dbfb;
+}
+
+.alert-primary .alert-link {
+  color: #173b57;
+}
+
+.alert-secondary {
+  color: #464a4e;
+  background-color: #e7e8ea;
+  border-color: #dddfe2;
+}
+
+.alert-secondary hr {
+  border-top-color: #cfd2d6;
+}
+
+.alert-secondary .alert-link {
+  color: #2e3133;
+}
+
+.alert-success {
+  color: #516a35;
+  background-color: #ebf5e0;
+  border-color: #e3f1d4;
+}
+
+.alert-success hr {
+  border-top-color: #d6ebc1;
+}
+
+.alert-success .alert-link {
+  color: #374824;
+}
+
+.alert-info {
+  color: #146771;
+  background-color: #d4f4f8;
+  border-color: #c2eff5;
+}
+
+.alert-info hr {
+  border-top-color: #ace9f1;
+}
+
+.alert-info .alert-link {
+  color: #0c4046;
+}
+
+.alert-warning {
+  color: #856915;
+  background-color: #fff4d4;
+  border-color: #fff0c3;
+}
+
+.alert-warning hr {
+  border-top-color: #ffeaaa;
+}
+
+.alert-warning .alert-link {
+  color: #59460e;
+}
+
+.alert-danger {
+  color: #7c2b2a;
+  background-color: #fcdddc;
+  border-color: #fbcfce;
+}
+
+.alert-danger hr {
+  border-top-color: #f9b8b6;
+}
+
+.alert-danger .alert-link {
+  color: #561e1d;
+}
+.alert-danger {
+  color: #7c2b2a;
+  background-color: #fcdddc;
+  border-color: #fbcfce;
+}
+
+.alert-danger hr {
+  border-top-color: #f9b8b6;
+}
+
+.alert-danger .alert-link {
+  color: #561e1d;
+}
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+}
+
+.close:focus,
+.close:hover {
+  color: #000;
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+button.close {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+.justify-content-start {
+  -ms-flex-pack: start !important;
+  justify-content: flex-start !important;
+}
+
+.h3-title {
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+  color: brown;
+}
+
+.span-inf {
+  font-size: 10px;
+  text-align: center;
+}

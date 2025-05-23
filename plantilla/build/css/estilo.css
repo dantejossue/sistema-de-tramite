@@ -1,0 +1,20 @@
+.default {
+    width: 100%;
+    border: 1px solid #000;
+ }
+ .default thead th, td {
+    width: 25%;
+    text-align: center;
+   vertical-align: top;
+   border: 1px solid #000;
+   background: teal;
+   color: white;
+   height: 30px;
+ }
+ .default tbody th, td {
+    width: 25%;
+    text-align: center;
+   vertical-align: top;
+   border: 1px solid #000;
+   height: 30px;
+ }

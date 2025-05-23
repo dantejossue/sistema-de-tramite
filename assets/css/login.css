@@ -1,0 +1,142 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(150deg, #0e2a66, #7bd5ff);
+    height: 100vh;
+}
+
+.formulario{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+}
+
+.logo{
+    height: 90px;
+    width: 90px;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.formulario h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 2px solid silver;
+}
+
+.formulario .form{
+    padding: 0 40px 0 40px;
+    box-sizing: border-box;
+}
+
+.h3-titulo{
+    font-size: 20px;
+    text-align: center;
+    font-style: italic;
+    color: brown;
+}
+
+.form .usuario{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+.usuario label{
+    position: absolute;
+    top: 40%;
+    left: 5px;
+    color: #000080;
+    transform: translateY(-170%);
+    font: 16px;
+    pointer-events: none;
+    font-size: 700;
+    transition: 0.5s;
+}
+
+.usuario input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.form .contrasena{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+.contrasena label{
+    position: absolute;
+    top: 40%;
+    left: 5px;
+    color: #000080;
+    transform: translateY(-170%);
+    font: 16px;
+    pointer-events: none;
+    font-size: 700;
+    transition: 0.5s;
+}
+
+.contrasena input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.btn_ingresar{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2e86c1;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.recordar {
+    margin: -5px 0 20px 5px;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn_mesa_partes{
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn_mesa_partes img{
+    width: 11rem;
+    border-radius: 10px;
+}
+
+.img-hover {
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn_mesa_partes:hover .img-hover {
+    transform: scale(1.1);  /* Aumenta el tamaño de la imagen al hacer hover */
+}

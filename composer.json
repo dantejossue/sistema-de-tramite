@@ -1,0 +1,5 @@
+{
+    "require": {
+        "illuminate/filesystem": "^12.1"
+    }
+}

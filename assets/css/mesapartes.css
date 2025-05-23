@@ -1,0 +1,20 @@
+.logo-yape {
+    width: 200px; /* Cambia este valor al tamaño deseado */
+    height: auto; 
+  }
+  
+  .info-yape{
+    margin-left: 20px; /* Espacio entre la imagen y el texto */
+    color: #00BFA5;
+    font-size: 30px;
+  }
+  
+  .info-yape p {
+    margin: 0; /* Elimina el margen para cada párrafo */
+    line-height: 1.5;
+  }
+  
+  .container-yape {
+    display: flex;
+    align-items: center;
+  }
