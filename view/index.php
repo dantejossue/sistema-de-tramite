@@ -282,7 +282,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_aceptados.php')" class="nav-link">
                   <i class="nav-icon fas fa-file-signature"></i>
                   <p>
                     Trámites Aceptados
@@ -290,7 +290,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_archivado.php')" class="nav-link">
                   <i class="nav-icon fas fa-file-signature"></i>
                   <p>
                     Trámites Archivados
