@@ -39,7 +39,7 @@ if (isset($_SESSION['S_ID'])) {  //Comprueba si la variable de sesión S_ID exis
             </div>
             <button class="btn_ingresar" type="submit" onclick="iniciar_sesion()">Ingresar</button><br><br>
             <!-- <div class="recordar"><a href="RecuperarContrasena">¿Olvidó su contraseña?</a></div>-->
-            <a href="registrar_tramite.php" class="btn_mesa_partes">
+            <a href="registrar_tramite.php" class="btn_mesa_partes" target="_blank">
                 <img class="img-hover" src="https://www.munijesusmaria.gob.pe/wp-content/uploads/2020/07/mesadepartes-imagen-1.jpg" alt="Logo mesa de partes virtual">
             </a>
         </div>
