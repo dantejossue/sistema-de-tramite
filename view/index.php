@@ -281,6 +281,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')" class="nav-link">
+                  <i class="nav-icon fas fa-file-signature"></i>
+                  <p>
+                    Trámites Aceptados
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')" class="nav-link">
+                  <i class="nav-icon fas fa-file-signature"></i>
+                  <p>
+                    Trámites Archivados
+                  </p>
+                </a>
+              </li>
             <?php
             }
             ?>
