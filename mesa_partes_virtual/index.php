@@ -13,7 +13,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../plantilla/dist/css/adminlte.css">
 
-    <link rel="icon" href="../assets/img/21001.png">
+    <link rel="icon" href="../assets/img/logo mixto.jpg">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,7 +22,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="index.php"><img src="../assets/img/21001.png" alt="logo"></a></li>
+                <li><a href="index.php"><img src="../assets/img/logo mixto.jpg" alt="logo"></a></li>
                 <li>
                     <h2><b>INSTITUCION EDUCATIVA 21001</b></h2>
                 </li>
