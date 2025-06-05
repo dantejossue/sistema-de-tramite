@@ -30,6 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="../plantilla/dist/css/adminlte.min.css">
 
   <link rel="stylesheet" href="../plantilla/build/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 
   <link rel="icon" href="../assets/img/logo mixto.jpg">
 
@@ -182,7 +183,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
             <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
               <li class="nav-item">
-                <a href="index.php" class="nav-link">
+                <a href="index.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
                   <i class="nav-icon fas fa-home"></i>
                   <p>
                     Inicio
@@ -258,7 +259,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             ?>
             <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
               <li class="nav-item">
-                <a href="index.php" class="nav-link">
+                <a href="index.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
                   <i class="nav-icon fas fa-home"></i>
                   <p>
                     Inicio
@@ -541,6 +542,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     })
 }
 <?php } ?>
+
+// Al hacer clic en cualquier enlace del sidebar, quitamos la clase 'active' de todos y se la asignamos solo al clickeado
+  $(document).on('click', '.nav-sidebar a', function () {
+    $('.nav-sidebar a').removeClass('active');
+    $(this).addClass('active');
+  });
   </script>
 
 </body>
