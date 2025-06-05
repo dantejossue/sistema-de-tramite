@@ -12,7 +12,7 @@
             <div class="col-sm-11">
                 <h1 class="m-0">
                     <center><b>GESTIÓN DE USUARIOS</b></center>
-                </h1>
+                </h1> 
             </div><!-- /.col -->
             <div class="col-sm-1">
                 <ol class="breadcrumb float-sm-right">
