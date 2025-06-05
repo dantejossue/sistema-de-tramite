@@ -28,21 +28,22 @@ if (isset($_SESSION['S_ID'])) {  //Comprueba si la variable de sesión S_ID exis
         <a href="index.php"><img class="logo" src="assets/img/logo mixto.jpg" alt="Logo Colegio"></a>
         <h1>Inicio de Sesión</h1>
         <h3 class="h3-titulo">Sistema de Trámite Documentario</h3>
-        <div class="form">
+        <form class="form" onsubmit="iniciar_sesion(); return false;">
             <div class="usuario">
                 <label>Usuario:</label>
-                <input id="txt_usuario" type="text">
+                <input id="txt_usuario" type="text" required>
             </div>
             <div class="contrasena">
                 <label>Contraseña:</label>
-                <input id="txt_contra" type="password">
+                <input id="txt_contra" type="password" required>
             </div>
-            <button class="btn_ingresar" type="submit" onclick="iniciar_sesion()">Ingresar</button><br><br>
-            <!-- <div class="recordar"><a href="RecuperarContrasena">¿Olvidó su contraseña?</a></div>-->
+            <button class="btn_ingresar" type="submit">Ingresar</button><br><br>
+
             <a href="registrar_tramite.php" class="btn_mesa_partes" target="_blank">
                 <img class="img-hover" src="https://www.munijesusmaria.gob.pe/wp-content/uploads/2020/07/mesadepartes-imagen-1.jpg" alt="Logo mesa de partes virtual">
             </a>
-        </div>
+        </form>
+
     </div>
 
 
