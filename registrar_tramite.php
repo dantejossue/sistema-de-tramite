@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mesa de Partes Virtual - 21001</title>
+    <title>Mesa de Partes Virtual - Mixto San Luis</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -82,10 +82,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <label class="mb-0">Formato único de trámite (FUT):
-                                <a href="assets/docs/fut 21001.pdf" download="fut 21001.pdf">fut 21001.pdf</a>
+                                <a href="assets/docs/fut 21001.pdf" download="fut 21001.pdf">fut.pdf</a>
                             </label>
                             <label class="mb-0">Texto único de procedimiento Administrativo (TUPA):
-                                <a href="assets/docs/tupa 21001.pdf" download="tupa 21001.pdf">tupa 21001.pdf</a>
+                                <a href="assets/docs/tupa 21001.pdf" download="tupa 21001.pdf">tupa.pdf</a>
                             </label>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
@@ -288,7 +288,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <img src="assets/img/yape.png" alt="Logo" class="logo-yape">
                             <div class="info-yape">
                                 <p>997 558 341</p>
-                                <p>Directora:</p>
+                                <p>Colegio Mixto San Luis</p>
                                 <p>Carmen Yauri Aburto</p>
                             </div>
                         </div>
