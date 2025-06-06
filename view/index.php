@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="../plantilla/build/css/style.css">
   <link rel="stylesheet" href="../assets/css/style.css">
 
-  <link rel="icon" href="../assets/img/logo mixto.jpg">
+  <link rel="icon" href="../assets/img/logo mixto.png">
 
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="../plantilla/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
@@ -160,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index.php" class="brand-link">
-        <img src="../assets/img/logo mixto.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="../assets/img/logo mixto.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">IEP</span>
       </a>
 
@@ -339,18 +339,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.col-md-12 -->
             <div class="col-lg-12">
               <div class="card card-primary card-outline">
-                <div class="card-header">
-                  <h5 class="m-0"><i class="ion ion-md-folder-open mr-1"></i>&nbsp; <b>RESUMEN DE TRÁMITES EN GENERAL:</b></h5>
+                <div class="card-header d-flex">
+                  <h5 class="m-0"><i class="ion ion-md-folder-open mr-1"></i>&nbsp; <b>RESUMEN DE TRÁMITES EN GENERAL: </b></h5>&nbsp;&nbsp;&nbsp;
+                  <h3 id="lbl_tramites" class="card-title card-header-title text-bold" style="font-size: 1.3rem;"></h3>&nbsp;
+                  <h3 id="lbl_tramites" class="card-title card-header-title" style="font-size: 1.3rem;"><b> Trámites en total</b></h3>
                 </div>
                 <div class="card-body">
                   <div class="row">
-                  <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
+                  <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)' || $_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
                     <div class="col-lg-4 col-6">
                       <!-- small box -->
                       <div class="small-box bg-success">
                         <div class="inner">
                           <h5><b>ACEPTADOS</b></h5>
-                          <h3 id="lbl_tramite">0</h3>
+                          <h3 id="lbl_tramite_aceptado">0</h3>
                           <p>Total de documentos</p>
                         </div>
                         <div class="icon">
@@ -365,7 +367,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <div class="small-box bg-info">
                         <div class="inner">
                           <h5><b>PENDIENTES</b></h5>
-                          <h3 id="lbl_pendiente">0</h3>
+                          <h3 id="lbl_tramite_pendiente">0</h3>
                           <p>Total de documentos</p>
                         </div>
                         <div class="icon">
@@ -379,8 +381,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <!-- small box -->
                       <div class="small-box bg-danger">
                         <div class="inner">
-                          <h5><b>FINALIZADOS</b></h5>
-                          <h3 id="lbl_tramite_finalizado">0</h3>
+                          <h5><b>RECHAZADOS</b></h5>
+                          <h3 id="lbl_tramite_rechazado">0</h3>
                           <p>Total de documentos</p>
                         </div>
                         <div class="icon">
@@ -391,6 +393,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                     <!-- ./col -->
                     <?php } ?>
+
+                    
                   </div>
                 </div>
               </div>
@@ -527,7 +531,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../plantilla/plugins/select2/js/select2.full.min.js"></script>
 
   <script>
-    <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
+    <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)' || $_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
     Traer_Widget();
     function Traer_Widget(){
     $.ajax({
@@ -536,12 +540,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }).done(function(resp){
         let data = JSON.parse(resp);
         if(data.length>0){
-          document.getElementById('lbl_tramite').innerHTML = data[0][0];
-          document.getElementById('lbl_tramite_finalizado').innerHTML = data[0][1];
+          document.getElementById('lbl_tramites').innerHTML = data[0][0]; // total de trámites
+          document.getElementById('lbl_tramite_aceptado').innerHTML = data[0][1]; // aceptados
+          document.getElementById('lbl_tramite_pendiente').innerHTML = data[0][2]; // pendientes
+          document.getElementById('lbl_tramite_rechazado').innerHTML = data[0][3]; // rechazados
         }
     })
-}
-<?php } ?>
+    }
+    <?php } ?>
 
 // Al hacer clic en cualquier enlace del sidebar, quitamos la clase 'active' de todos y se la asignamos solo al clickeado
   $(document).on('click', '.nav-sidebar a', function () {

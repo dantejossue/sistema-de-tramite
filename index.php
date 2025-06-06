@@ -18,14 +18,14 @@ if (isset($_SESSION['S_ID'])) {  //Comprueba si la variable de sesión S_ID exis
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingreso al Sistema</title>
-    <link rel="icon" href="assets/img/logo mixto.jpg">
+    <link rel="icon" href="assets/img/logo mixto.png" type="image/png">
     <link rel="stylesheet" href="assets/css/login.css">
 
 </head>
 
 <body>
     <div class="formulario">
-        <a href="index.php"><img class="logo" src="assets/img/logo mixto.jpg" alt="Logo Colegio"></a>
+        <a href="index.php"><img class="logo" src="assets/img/logo mixto.png" alt="Logo Colegio"></a>
         <h1>Inicio de Sesión</h1>
         <h3 class="h3-titulo">Sistema de Trámite Documentario</h3>
         <form class="form" onsubmit="iniciar_sesion(); return false;">
