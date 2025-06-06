@@ -51,6 +51,7 @@ function iniciar_sesion() {
           usu: data[0][1],
           rol: data[0].usu_rol,
           area_nombre: data[0].area_nombre,
+          usu_persona: data[0].usu_persona, 
         },
       }).done(function (r) {
         //Metodo de jQuery AJAX que se ejecuta cuando la solicitud AJAX fue exitosa, la funcion recibe la respuesta del servidor y la procesa -> r(respuesta del controlador_crear_sesion.php)

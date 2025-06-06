@@ -129,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="demo-navbar-user nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
             <?php
-            $nombre = $_SESSION['S_USU'];
+            $nombre = $_SESSION['S_USU_NOMBRE'];
             echo $nombre;
             ?>
           </a>
@@ -237,7 +237,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Procedimientos Admin
                 </p>
               </a>
-            </li>-->
+             </li>-->
               <li class="nav-item">
                 <a onclick="cargar_contenido('contenido_principal','busqueda/view_busqueda.php')" class="nav-link">
                   <i class="nav-icon fas fa-search-minus"></i>
@@ -276,7 +276,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item">
                 <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')" class="nav-link">
-                  <i class="nav-icon fas fa-file-signature"></i>
+                  <i class="nav-icon fas fa-plus"></i>
                   <p>
                     Nuevo Trámite
                   </p>
@@ -284,7 +284,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item">
                 <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_aceptados.php')" class="nav-link">
-                  <i class="nav-icon fas fa-file-signature"></i>
+                  <i class="nav-icon fas fa-check-circle"></i>
                   <p>
                     Trámites Aceptados
                   </p>
@@ -292,7 +292,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item">
                 <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_archivado.php')" class="nav-link">
-                  <i class="nav-icon fas fa-file-signature"></i>
+                  <i class="nav-icon fas fa-times-circle"></i>
                   <p>
                     Trámites Archivados
                   </p>
