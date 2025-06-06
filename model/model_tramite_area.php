@@ -4,12 +4,13 @@ require_once 'model_conexion.php';
 
 class Modelo_TramiteArea extends conexionBD{
 
-    public function Listar_Tramite($idusuario){
+    public function Listar_Tramite($idusuario,$estado){
         $c = conexionBD::conexionPDO();
-        $sql = "CALL SP_LISTAR_TRAMITE_AREA(?)";
+        $sql = "CALL SP_LISTAR_TRAMITE_AREA(?,?)";
         $arreglo = array();
         $query = $c->prepare($sql);
         $query -> bindParam(1,$idusuario);
+        $query->bindParam(2, $estado);
         $query ->execute();
         $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach($resultado as $resp){

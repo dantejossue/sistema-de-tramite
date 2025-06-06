@@ -1,5 +1,5 @@
 var tbl_tramite;
-function listar_tramite(){
+function listar_tramite(estado = 'PENDIENTE'){
     let idusuario = document.getElementById('txtprincipalid').value;
     tbl_tramite = $("#tabla_tramite").DataTable({
         "ordering":false,   
@@ -14,7 +14,8 @@ function listar_tramite(){
             "url":"../controller/tramite_area/controlador_listar_tramite.php",
             type:'POST',
             data: {
-                idusuario: idusuario
+                idusuario: idusuario,
+                estado: estado 
             }
         },
         "columns":[
@@ -42,10 +43,10 @@ function listar_tramite(){
             {"data":"tramite_estado",
                 render: function(data,type,row){
                 if(data=='PENDIENTE'){
-                    return "<button class='accion btn btn-success btn-sm'><i class='fas fa-share-square'></i></button>&nbsp;\
-                            <button class='aceptar btn btn-warning btn-sm'><i class='fas fa-check-circle fa-lg text-white'></i></button>";
+                    return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp;\
+                            <button class='aceptar btn btn-secondary btn-sm'><i class='fas fa-ellipsis-h text-white'></i></button>";
                 }else{
-                    return "<button class='accion btn btn-success btn-sm'><i class='fas fa-share-square'></i></button>"
+                    return "<button class='archivar btn btn-warning btn-sm'><i class='fas fa-archive'></i></button>"
                 }
                 }
             },
@@ -148,12 +149,22 @@ $('#tabla_tramite').on('click','.aceptar',function(){
 
     dataGlobal = data;
     $("#modalacept").modal('show');
+    document.getElementById('nro_expe4').innerHTML = data.tramite_id;
     document.getElementById('nrodoc_acept').value = data.tramite_nrodocumento;
     document.getElementById('nrofol_acept').value = data.tramite_folio;
     document.getElementById('nroexpe_acept').value = data.tramite_id;
     document.getElementById('estado_acept').value = data.tramite_estado;
     document.getElementById('tipodoc_acept').value = data.tipodo_descripcion;
     document.getElementById('asunto_acept').value = data.tramite_asunto;
+})
+
+$('#tabla_tramite').on('click','.archivar',function(){
+    var data = tbl_tramite.row($(this).parents('tr')).data();//En tamaño escritorio
+    if(tbl_tramite.row(this).child.isShown()){
+        var data = tbl_tramite.row(this).data();
+    }//Permite llevar los datos cuando es tamaño celular y usas  el responsive de datatable
+    $("#modalarchivar").modal('show');
+    document.getElementById('nro_expe3').innerHTML = data.tramite_id;   
 })
 
 

@@ -17,7 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="plantilla/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="plantilla/build/css/style.css">
-    <link rel="icon" href="assets/img/logo mixto.jpg">
+    <link rel="icon" href="assets/img/logo mixto.png">
     <link rel="stylesheet" href="assets/css/mesapartes.css">
     <link rel="stylesheet" href="plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="registrar_tramite.php" class="navbar-brand">
-                    <img src="assets/img/logo mixto.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <img src="assets/img/logo mixto.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">TRAMITE DOCUMENTARIO</span>
                 </a>
 

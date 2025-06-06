@@ -242,7 +242,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a onclick="cargar_contenido('contenido_principal','busqueda/view_busqueda.php')" class="nav-link">
                   <i class="nav-icon fas fa-search-minus"></i>
                   <p>
-                    Búsqueda de Trámites
+                    Seguimiento de Trámites
                   </p>
                 </a>
               </li>
@@ -283,18 +283,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_aceptados.php')" class="nav-link">
-                  <i class="nav-icon fas fa-check-circle"></i>
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_seguimiento.php')" class="nav-link">
+                  <i class="nav-icon fas fa-search-minus"></i>
                   <p>
-                    Trámites Aceptados
+                    Seguimiento de Trámites
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_archivado.php')" class="nav-link">
-                  <i class="nav-icon fas fa-times-circle"></i>
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_reportes.php')" class="nav-link">
+                  <i class="nav-icon fas fa-file-contract"></i>
                   <p>
-                    Trámites Archivados
+                    Reportes
                   </p>
                 </a>
               </li>

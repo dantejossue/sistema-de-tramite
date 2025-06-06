@@ -17,7 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="plantilla/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="plantilla/build/css/style.css">
-    <link rel="icon" href="assets/img/21001.png">
+    <link rel="icon" href="assets/img/logo mixto.png">
 
     <!-- Select2 -->
   <link rel="stylesheet" href="../plantilla/plugins/select2/css/select2.min.css"> <!-- modifiqué solo el height:28px a height: none por si algun dia lo necesite -->
@@ -31,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="seguimiento.php" class="navbar-brand">
-                    <img src="assets/img/21001.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <img src="assets/img/logo mixto.png" alt="Logo cole" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">TRAMITE DOCUMENTARIO</span>
                 </a>
 

@@ -30,7 +30,7 @@
             <h3 class="card-title card-header-title" style="font-size: 1.3rem;"><b>Listado de Trámites</b></h3>
             <div style="float:right;">
               <label>Listar por: </label>
-              <select class="select-reporte select-info" name="cbovista" id="cbovista">
+              <select class="select-reporte select-info" id="select-vista-estado">
                 <option value="PENDIENTE">PENDIENTE</option>
                 <option value="ACEPTADO">ACEPTADO</option>
                 <option value="RECHAZADO">RECHAZADO</option>
@@ -354,13 +354,58 @@
   <!-- /.modal-dialog -->
 </div>
 
+<!-- MODAL FINALIZACION-->
+<div class="modal fade" id="modalarchivar">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" id="modal-header">
+        <h4 class="modal-title modal-title-h4" id="modal-title">Finalizar/Archivar Trámite:</h4>&nbsp;&nbsp;
+        <h4 id="nro_expe3" class="modal-title modal-title-h4" style="color: brown;"></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">x</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Fecha: </label><span class="span-red"> (*)</span>
+              <div class="input-group date" id="reservationdate_ar" data-target-input="nearest">
+                <input class="input-date" readonly="" type="text" id="datepicker1_ar" value="<?php echo $fechaActual = date('d/m/Y') ?>">
+                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Descripción: </label><span class="span-gray">(Opcional)</span>
+              <textarea class="form-control" id="iddescripcion_ar" placeholder="Ingrese la descripción..."></textarea>
+            </div>
+          </div>
+        </div>
+        <input type="text" id="txt_idtramite_ar" hidden>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn1  btn-danger" data-dismiss="modal" onclick="limpiarderivacion()">Cancelar</button>
+        <button type="button" class="btn btn1 btn-primary" onclick="Registrar_Archivado()">Registrar</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 
 <!-- MODAL DE ACEPTACION-->
 <div class="modal fade" id="modalacept">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header" id="modal-header">
-        <h4 class="modal-title modal-title-h4" id="modal-title">ACEPTAR/RECHAZAR TRÁMITE</h4>
+        <h4 class="modal-title modal-title-h4" id="modal-title">Aceptar/Rechazar trámite:</h4>&nbsp;&nbsp;
+        <h4 id="nro_expe4" class="modal-title modal-title-h4" style="color: brown;"></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">x</span>
         </button>
@@ -433,8 +478,13 @@
 
 <script>
   $(document).ready(function() {
-    listar_tramite();
+    listar_tramite($('#select-vista-estado').val());
     $('.js-example-basic-single').select2();
+
+    $('#select-vista-estado').change(function () {
+    let estadoSeleccionado = $(this).val();
+    listar_tramite(estadoSeleccionado); // recarga DataTable filtrando
+  });
   });
   Cargar_Select_Tipo();
   Cargar_select_Area();
