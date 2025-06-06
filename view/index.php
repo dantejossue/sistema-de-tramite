@@ -531,7 +531,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../plantilla/plugins/select2/js/select2.full.min.js"></script>
 
   <script>
-    <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)' || $_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
+    <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
     Traer_Widget();
     function Traer_Widget(){
     $.ajax({
@@ -546,6 +546,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
           document.getElementById('lbl_tramite_rechazado').innerHTML = data[0][3]; // rechazados
         }
     })
+    }
+    <?php } ?>
+
+    <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
+    Traer_Widget_Area();
+    function Traer_Widget_Area(){
+      $.ajax({
+        url: '../controller/usuario/controlador_cargar_widget_area.php',
+        type: 'POST',
+      }).done(function(resp){
+        let data = JSON.parse(resp);
+        if(data.length > 0){
+          document.getElementById('lbl_tramites').innerHTML = data[0][0];
+          document.getElementById('lbl_tramite_aceptado').innerHTML = data[0][1];
+          document.getElementById('lbl_tramite_pendiente').innerHTML = data[0][2];
+          document.getElementById('lbl_tramite_rechazado').innerHTML = data[0][3];
+        }
+      });
     }
     <?php } ?>
 

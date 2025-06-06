@@ -171,6 +171,16 @@ class Modelo_Usuario extends conexionBD
         return $arreglo; //Retornar el array con los datos
         conexionBD::cerrar_conexion();
     }
+
+    public function Cargar_Widget_Por_Area($idusuario){
+        $c = conexionBD::conexionPDO();
+        $sql = "CALL SP_WIDGET_POR_AREA(?)";
+        $query = $c->prepare($sql);
+        $query->bindParam(1, $idusuario, PDO::PARAM_INT);
+        $query->execute();
+        $resultado = $query->fetchAll();
+        return $resultado;
+    }
 }
 
 
