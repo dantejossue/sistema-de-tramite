@@ -507,7 +507,7 @@ function Registrar_Tramite(){
             if(resp.length>0){
                 Swal.fire("Mensaje de Confirmación","Nuevo Trámite registrado codigo "+resp,"success").then((value)=>{
                     window.open("MPDF/REPORTE/ticket_tramite.php?codigo="+resp+"#zoom=100");
-                    $("#contenido_principal").load("tramite_area/view_tramite_area.php");
+                    $("#contenido_principal").load("tramite_area/view_tramite_area_registro.php");
                 });
             }else{
                 Swal.fire("Mensaje de Advertencia","El Usuario ingresado ya se encuentra en la base de datos","warning");

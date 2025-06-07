@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <script src="../js/console_tramite_area.js?rev=<?php echo time(); ?>"></script>
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -40,7 +43,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-body">
-            <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="../../reporte/reporte-areas.php" id="ReportUsu">
+            <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tramite_area.php?usu_id=<?= $_SESSION['S_ID']; ?>" id="ReportUsu">
               <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br>
             <table id="tabla_tramite" class="table table-hover table-data">
               <thead>
@@ -411,56 +414,56 @@
         </button>
       </div>
       <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>N° Documento </label><span class="span-red"> (*)</span>
-                <input type="text" class="form-control input-form" id="nrodoc_acept" disabled>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>N° Folios </label><span class="span-red"> (*)</span>
-                <input type="number" class="form-control input-form" id="nrofol_acept" disabled>
-              </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>N° Documento </label><span class="span-red"> (*)</span>
+              <input type="text" class="form-control input-form" id="nrodoc_acept" disabled>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>N° Expediente </label><span class="span-red"> (*)</span>
-                <input type="text" class="form-control input-form" id="nroexpe_acept" disabled>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Estado </label><span class="span-red"> (*)</span>
-                <input type="text" class="form-control input-form" id="estado_acept" disabled>
-              </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>N° Folios </label><span class="span-red"> (*)</span>
+              <input type="number" class="form-control input-form" id="nrofol_acept" disabled>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Tipo</label><span class="span-red"> (*)</span>
-                <input type="text" class="form-control input-form" id="tipodoc_acept" disabled>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Asunto </label><span class="span-red"> (*)</span>
-                <textarea disabled class="form-control input-form" rows="3" id="asunto_acept"></textarea>
-              </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>N° Expediente </label><span class="span-red"> (*)</span>
+              <input type="text" class="form-control input-form" id="nroexpe_acept" disabled>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label>Descripción: </label><span class="span-gray">(Opcional)</span>
-                <textarea class="form-control" rows="3" id="des" placeholder="Ingrese la descripción..."></textarea>
-              </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Estado </label><span class="span-red"> (*)</span>
+              <input type="text" class="form-control input-form" id="estado_acept" disabled>
             </div>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Tipo</label><span class="span-red"> (*)</span>
+              <input type="text" class="form-control input-form" id="tipodoc_acept" disabled>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Asunto </label><span class="span-red"> (*)</span>
+              <textarea disabled class="form-control input-form" rows="3" id="asunto_acept"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Descripción: </label><span class="span-gray">(Opcional)</span>
+              <textarea class="form-control" rows="3" id="des" placeholder="Ingrese la descripción..."></textarea>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn1 btn-primary" data-dismiss="modal" id="btnCerra">Cerrar</button>
@@ -481,28 +484,29 @@
     listar_tramite($('#select-vista-estado').val());
     $('.js-example-basic-single').select2();
 
-    $('#select-vista-estado').change(function () {
-    let estadoSeleccionado = $(this).val();
-    listar_tramite(estadoSeleccionado); // recarga DataTable filtrando
-  });
+    $('#select-vista-estado').change(function() {
+      let estadoSeleccionado = $(this).val();
+      listar_tramite(estadoSeleccionado); // recarga DataTable filtrando
+    });
   });
   Cargar_Select_Tipo();
   Cargar_select_Area();
   Cargar_select_Area_Destino();
 
   $('#select_accion').change(function() {
-  let accion = this.value;
-  let x = document.getElementsByClassName('div_derivar');
-  for (let i = 0; i < x.length; i++) {
-    x[i].style.display = (accion === "DERIVAR") ? 'block' : 'none';
-  }
-});
+    let accion = this.value;
+    let x = document.getElementsByClassName('div_derivar');
+    for (let i = 0; i < x.length; i++) {
+      x[i].style.display = (accion === "DERIVAR") ? 'block' : 'none';
+    }
+  });
 
   document.getElementById("btnAceptar").addEventListener("click", function() {
-      cambiarEstadoTramite("ACEPTADO",dataGlobal);
+    cambiarEstadoTramite("ACEPTADO", dataGlobal);
   });
 
   document.getElementById("btnRechazar").addEventListener("click", function() {
-      cambiarEstadoTramite("RECHAZADO",dataGlobal);
+    cambiarEstadoTramite("RECHAZADO", dataGlobal);
   });
+  
 </script>
