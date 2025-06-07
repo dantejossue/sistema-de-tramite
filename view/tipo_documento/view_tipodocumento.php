@@ -3,13 +3,14 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">MANTENIMIENTO DE TIPO DOCUMENTO</h1>
+                <div class="col-sm-11">
+                    <h1 class="m-0">
+                        <center><b>GESTIÓN TIPO DE DOCUMENTO</b></center>
+                    </h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
+                <div class="col-sm-1">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Tipo Documento</li>
+                        <li class="breadcrumb-item"><i class="nav-icon fas fa-file"></i>&nbsp; Tipo Doc</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,6 +31,8 @@
                             <button id="btn" class="btn btn-danger btn-sm float-right" onclick="AbrirRegistro()"> <i class="fas fa-plus"></i> Nuevo registro</button>
                         </div>
                         <div class="card-body">
+                            <a Target="_blank" class="btn btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tipo_doc.php" id="ReportUsu">
+                            <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br>
                             <table id="tabla_tipo" class="table table-hover table-data" style="width:100%">
                                 <thead>
                                     <tr>
@@ -116,7 +119,7 @@
         $(document).ready(function() {
             $('#tabla_tipo').DataTable();
             listar_tipodocumento();
-        });     
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

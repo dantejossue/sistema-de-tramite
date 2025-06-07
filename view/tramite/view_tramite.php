@@ -33,7 +33,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-body">
-            <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="../../reporte/reporte-areas.php" id="ReportUsu">
+            <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tramites.php" id="ReportUsu">
               <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br>
             <table id="tabla_tramite" class="table table-hover table-data">
               <thead>

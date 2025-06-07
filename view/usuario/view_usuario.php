@@ -36,7 +36,7 @@
                         <button id="btn" class="btn btn-a bg-success float-right" data-toggle="modal" onclick="AbrirRegistro()"> <i class="fas fa-plus"></i> Nuevo registro</button>
                     </div>
                     <div class="card-body">
-                        <a Target="_blank" class="btn btn-a bg-gray-dark" href="../../reporte/reporte-areas.php" id="ReportUsu">
+                        <a Target="_blank" class="btn btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_usuarios.php" id="ReportUsu">
                             <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br>
                         <table id="tabla_usuario" class="ttable table-hover table-data" width="100%">
                             <thead>

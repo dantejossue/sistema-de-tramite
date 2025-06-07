@@ -32,6 +32,8 @@
                 <button id="btn" class="btn btn-danger btn-sm float-right" onclick="AbrirRegistro()"> <i class="fas fa-plus"></i> Nuevo registro</button>
               </div>
               <div class="card-body">
+                <a Target="_blank" class="btn btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_personal.php" id="ReportUsu">
+                            <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br>
                 <table id="tabla_persona" class="table table-hover table-data" style="width:100%">
                   <thead>
                     <tr>
