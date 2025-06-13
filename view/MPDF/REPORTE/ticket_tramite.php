@@ -36,7 +36,7 @@ while($row=$resultado2->fetch_assoc()){
     <table width="100%">
         <tr>
             <td align = "center">
-                <img width="30%" align="center" src="../../../assets/img/'.$logo.'">
+                <img width="30%" align="center" src="../../../assets/img/logo-mixto.jpg">
             </td>
         </tr>
     </table>     

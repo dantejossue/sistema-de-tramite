@@ -25,7 +25,7 @@ if ($row2 = $resultado->fetch_assoc()) {
 }
 
 // Cargar imagen en base64 (evita errores de ruta)
-$logoBase64 = base64_encode(file_get_contents(__DIR__ . "/../../../assets/img/$logo"));
+$logoBase64 = base64_encode(file_get_contents(__DIR__ . "/../../../assets/img/logo-mixto.jpg"));
 $ugelBase64 = base64_encode(file_get_contents(__DIR__ . "/../../../assets/img/$ugel"));
 
 $consulta = $mysql->query("SELECT * FROM area");
@@ -42,7 +42,7 @@ $html = '
 
 <table>
   <tr>
-    <td width="20%"><img src="data:image/png;base64,' . $logoBase64 . '" class="logo" /></td>
+    <td width="20%"><img src="data:image/jpg;base64,' . $logoBase64 . '" class="logo" /></td>
     <td width="60%" align="center">
       <div class="h2"><b>' . $razon . '</b></div>
       <p><b>Dirección:</b> ' . $direccion . '</p>
@@ -76,8 +76,6 @@ while ($row = $consulta->fetch_assoc()) {
 
 $html .= '</tbody></table>';
 
-// Limpieza del buffer para evitar errores de PDF
-ob_clean();
 
 $mpdf = new \Mpdf\Mpdf(['mode' => 'UTF-8', 'format' => 'A4']);
 $mpdf->WriteHTML($html);
