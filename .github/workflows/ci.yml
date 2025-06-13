@@ -32,7 +32,7 @@ jobs:
 
       - name: 🐳 Construir contenedores Docker
         run: |
-          docker-compose up -d --build
+          docker compose up -d --build
 
       - name: 🌐 Probar que el servicio web está activo
         run: |
