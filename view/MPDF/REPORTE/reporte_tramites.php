@@ -13,7 +13,7 @@ $logo = $empresa['emp_logo'];
 $ugel = $empresa['emp_ugel'];
 
 // Cargar imagen en base64 (evita errores de ruta)
-$logoBase64 = base64_encode(file_get_contents(__DIR__ . "/../../../assets/img/$logo"));
+$logoBase64 = base64_encode(file_get_contents(__DIR__ . "/../../../assets/img/logo-mixto.jpg"));
 $ugelBase64 = base64_encode(file_get_contents(__DIR__ . "/../../../assets/img/$ugel"));
 
 // Consulta de trámites
@@ -77,7 +77,7 @@ $html = '
 
 <table>
   <tr>
-    <td width="20%"><img src="data:image/png;base64,' . $logoBase64 . '" class="logo" /></td>
+    <td width="20%"><img src="data:image/jpg;base64,' . $logoBase64 . '" class="logo" /></td>
     <td width="60%" align="center">
       <div class="h2">'.$razon.'</div>
       <p><b>Teléfono:</b> '.$telefono.'</p>
