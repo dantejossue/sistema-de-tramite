@@ -40,13 +40,13 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Nro. Expediente:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="number" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label>DNI:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="number" class="form-control" maxlength="8">
                                             </div>
                                         </div>
                                         <div class="col-3">
@@ -55,30 +55,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <form id="FormBuscar">
-                                <div class="form-group row justify-content-between">
-                                    <div class="row">
-                                        <div class="col-5">
-                                            <div class="d-flex align-items-center">
-                                                <label class="w-75 text-right mr-3">Nro Expediente:</label>
-                                                <input type="email" class="form-control" id="idexpb" onkeypress="return validaNumericos(event)" maxlength="6">
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="d-flex align-items-center">
-                                                <label class="w-75 text-right mr-3">DNI:</label>
-                                                <input type="email" class="form-control" id="iddnii" onkeypress="return validaNumericos(event)" maxlength="8">
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div>
-                                                <button type="button" id="btnBusca" class="btn btn2 btn-danger"><i class="fa fa-search"></i>BUSCAR</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form>
                         </div>
                     </div>
 
