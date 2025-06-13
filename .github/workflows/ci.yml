@@ -1,0 +1,40 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "dev", "feature/**" ]
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.4.3
+        env:
+          MYSQL_ROOT_PASSWORD: admin
+          MYSQL_DATABASE: sis_tramite
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: admin
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: 🐘 Validar sintaxis PHP
+        run: |
+          find . -name "*.php" -exec php -l {} \;
+
+      - name: 🐳 Construir contenedores Docker
+        run: |
+          docker-compose up -d --build
+
+      - name: 🌐 Probar que el servicio web está activo
+        run: |
+          sleep 15
+          curl --fail http://localhost:8080 || exit 1
