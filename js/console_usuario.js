@@ -92,7 +92,7 @@ function iniciar_sesion() {
 
 function salir() {
   window.location =
-    "/sw_tramite/controller/usuario/controlador_cerrar_sesion.php"; //pagina donde tienes tus consultas para borrar
+    "/controller/usuario/controlador_cerrar_sesion.php"; //pagina donde tienes tus consultas para borrar
 }
 
 var tbl_usuario; // lo declaramos como una variable global

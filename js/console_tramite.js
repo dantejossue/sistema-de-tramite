@@ -99,7 +99,7 @@ $('#tabla_tramite').on('click','.mas',function(){
 
     // Obtener archivo usando Ajax
     $.ajax({
-        url: '../controller/tramite/controlador_obtener_archivo.php',
+        url: '/controller/tramite/controlador_obtener_archivo.php',
         type: 'POST',
         data: { id_tramite: data.tramite_id },
         dataType: 'json',
@@ -329,8 +329,8 @@ function mostrarArchivoTramite(archivoRuta) {
     }
 
     // Construcción de la URL asegurando que tenga "controller/tramite/documentos/"
-    let baseURL = window.location.origin + "/sw_tramite/";
-    let fullURL = baseURL + archivoRuta;
+    let baseURL = window.location.origin;
+    let fullURL = baseURL + '/' + archivoRuta;
 
     console.log("🔍 URL corregida para el archivo:", fullURL); // 👈 Para depuración
 

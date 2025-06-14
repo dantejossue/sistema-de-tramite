@@ -1,3 +1,3 @@
 <?php
-$mysql = new mysqli("localhost","root","","sis_tramite");
+$mysql = new mysqli("db","admin","admin","sis_tramite");
 ?>
