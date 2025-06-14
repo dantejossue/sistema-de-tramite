@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "dev", "feature/**" ]
+    branches: ["dev", "feature/**"]
   pull_request:
-    branches: [ "dev" ]
+    branches: ["dev"]
 
 jobs:
   build-and-test:
@@ -53,7 +53,15 @@ jobs:
       - name: 🛢 Verificar conexión a MySQL desde el contenedor web
         run: |
           docker compose exec -T web bash -c "apt-get update && apt-get install -y default-mysql-client"
-          docker compose exec -T web bash -c 'mysql -h db -uadmin -padmin -e "SHOW DATABASES;" | grep sis_tramite'
+
+          for i in {1..10}; do
+            echo "⏳ Intentando conexión a MySQL (intento $i)..."
+            docker compose exec -T web bash -c 'mysql -h db -uadmin -padmin -e "SHOW DATABASES;" && exit 0'
+            sleep 5
+          done
+
+          echo "❌ No se pudo conectar a MySQL después de varios intentos"
+          exit 1
 
       - name: 🧹 Apagar contenedores
         if: always()
