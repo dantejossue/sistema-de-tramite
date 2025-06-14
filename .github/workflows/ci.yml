@@ -10,18 +10,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.4.3
-        env:
-          MYSQL_ROOT_PASSWORD: admin
-          MYSQL_DATABASE: sis_tramite
-          MYSQL_USER: admin
-          MYSQL_PASSWORD: admin
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
       - name: 📥 Clonar repositorio
         uses: actions/checkout@v3
@@ -34,7 +22,39 @@ jobs:
         run: |
           docker compose up -d --build
 
-      - name: 🌐 Probar que el servicio web está activo
+      - name: 🌐 Verificar aplicación web (http://localhost:8080)
         run: |
-          sleep 15
-          curl --fail http://localhost:8080 || exit 1
+          echo "Esperando a que la app responda en el puerto 8080..."
+          for i in {1..10}; do
+            if curl --silent http://localhost:8080 > /dev/null; then
+              echo "✅ Aplicación web activa"
+              exit 0
+            fi
+            echo "⌛ Esperando..."
+            sleep 5
+          done
+          echo "❌ No se pudo conectar a http://localhost:8080"
+          exit 1
+
+      - name: 🌐 Verificar phpMyAdmin (http://localhost:8081)
+        run: |
+          echo "Esperando a que phpMyAdmin responda en el puerto 8081..."
+          for i in {1..10}; do
+            if curl --silent http://localhost:8081 > /dev/null; then
+              echo "✅ phpMyAdmin activo"
+              exit 0
+            fi
+            echo "⌛ Esperando..."
+            sleep 5
+          done
+          echo "❌ No se pudo conectar a http://localhost:8081"
+          exit 1
+
+      - name: 🛢 Verificar conexión a MySQL desde el contenedor web
+        run: |
+          docker compose exec -T web bash -c "apt-get update && apt-get install -y default-mysql-client"
+          docker compose exec -T web bash -c 'mysql -h db -uadmin -padmin -e "SHOW DATABASES;" | grep sis_tramite'
+
+      - name: 🧹 Apagar contenedores
+        if: always()
+        run: docker compose down -v
