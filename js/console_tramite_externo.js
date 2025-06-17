@@ -158,8 +158,8 @@ function Registrar_Tramite(){
     let raz = document.getElementById('txt_razon').value;
 
     //Datos del documento
-    let arp = document.getElementById('select_area_p').value;
-    let ard = document.getElementById('select_area_d').value;
+    let arp = 19;
+    let ard = 17;
     let tip = document.getElementById('select_tipo').value;
     let ndo = document.getElementById('txt_ndocumento').value;
     let asu = document.getElementById('txt_asunto').value;
@@ -215,7 +215,7 @@ function Registrar_Tramite(){
     formData.append("idusu",idusu);
 
     $.ajax({
-        url:'controller/tramite/controlador_registro_tramite.php',
+        url:'controller/tramite_externo/controlador_registro_tramite_externo.php',
         type:'POST',
         data:formData,
         contentType:false,
@@ -223,8 +223,12 @@ function Registrar_Tramite(){
         success:function(resp){
             if(resp.length>0){
                 Swal.fire("Mensaje de Confirmación","Nuevo Trámite registrado codigo "+resp,"success").then((value)=>{
+                     // ✅ Limpia los datos temporales
+                    sessionStorage.removeItem('dni');
+                    sessionStorage.removeItem('tipo_persona');
+                    // ✅ Redirige a la página de reporte
                     window.open("view/MPDF/REPORTE/ticket_tramite.php?codigo="+resp+"#zoom=100");
-                    $("#contenido_principal").load("tramite/view_tramite.php");
+                    $("#contenido_principal").load("registrar_tramite_externo.php");
                 });
             }else{
                 Swal.fire("Mensaje de Advertencia","El Usuario ingresado ya se encuentra en la base de datos","warning");
@@ -307,3 +311,103 @@ $('#ver_pago').on('click',function(){
     // document.getElementById('nro_expe1').innerHTML = data.tramite_id;
     // listar_tramite_seguimiento(data.tramite_id);
 })
+
+
+function soloNumeros(e) {
+      var tecla = (document.all) ? e.keyCode : e.which;
+      if (tecla == 8) {
+        return true;
+      }
+      var patron = /[0-9]/;
+      var tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
+
+$(document).ready(function() {
+    // Inicialmente deshabilitar el botón "Siguiente" y el campo DNI/RUC
+    $('#btn_siguiente').prop('disabled', true);
+    $('#input_dni_ruc').prop('disabled', true); // Bloquear el campo DNI/RUC al inicio
+
+    // Función para verificar si el formulario está completo
+    function verificarFormulario() {
+        var dniRuc = $('#input_dni_ruc').val().trim(); // Obtener el valor del DNI/RUC
+        var personaSeleccionada = $('input[name="tipo_persona"]:checked').length > 0; // Verificar si algún radio está seleccionado
+        var terminosAceptados = $('#acepto_terminos').prop('checked'); // Verificar si el checkbox está marcado
+
+        // Si el radio está seleccionado, el DNI/RUC no está vacío y los términos están aceptados, habilitar el botón
+        if (personaSeleccionada && dniRuc !== "" && terminosAceptados) {
+            $('#btn_siguiente').prop('disabled', false);
+        } else {
+            $('#btn_siguiente').prop('disabled', true);
+        }
+    }
+
+    // Cuando se cambie la selección del radio button
+    $('input[name="tipo_persona"]').on('change', function() {
+        // Activar el input y cambiar el placeholder
+        $('#input_dni_ruc').prop('disabled', false); // Habilitar el campo DNI/RUC
+
+        if ($('#persona_natural').is(':checked')) {
+            $('#input_dni_ruc').attr('placeholder', 'Ingrese su DNI (8 dígitos)');
+            $('#input_dni_ruc').attr('maxlength', '8');
+        } else if ($('#persona_juridica').is(':checked')) {
+            $('#input_dni_ruc').attr('placeholder', 'Ingrese su RUC (11 dígitos)');
+            $('#input_dni_ruc').attr('maxlength', '11');
+        }
+
+        // Verificar el estado del formulario
+        verificarFormulario();
+    });
+
+    // Cuando se escriba en el campo DNI/RUC
+    $('#input_dni_ruc').on('input', function() {
+        // Verificar el estado del formulario
+        verificarFormulario();
+    });
+
+    // Cuando se marque el checkbox de "Aceptar los términos"
+    $('#acepto_terminos').on('change', function() {
+        // Verificar el estado del formulario
+        verificarFormulario();
+    });
+
+    let isFormChanged = false;  // Variable para verificar si el formulario fue modificado
+
+    // Detectamos cualquier cambio en los campos del formulario
+    $('input, select, textarea').on('change', function() {
+        isFormChanged = true;
+    });
+
+    // Cuando el formulario es enviado, marcamos que no hay cambios pendientes
+    $('#formulario1').on('submit', function() {
+        isFormChanged = false;
+    });
+
+    // Evento antes de que la página sea cerrada o recargada
+    window.addEventListener('beforeunload', function (e) {
+        if (isFormChanged) {
+            // Configuramos el mensaje de confirmación
+            const message = "Tienes cambios no guardados en el formulario. ¿Estás seguro de que deseas salir?";
+            
+            // Para algunos navegadores antiguos, necesitamos esta línea:
+            (e || window.event).returnValue = message;
+
+            // Para los navegadores más modernos
+            return message;
+        }
+    });
+
+    const dni = sessionStorage.getItem('dni');
+    const tipoPersona = sessionStorage.getItem('tipo_persona');
+
+    if (tipoPersona === 'natural') {
+        $('#rad_presentacion1').prop('checked', true);
+        $('#txt_dni').val(dni);
+    } else if (tipoPersona === 'juridica') {
+        $('#rad_presentacion2').prop('checked', true);
+        $('#div_juridico').show(); // Mostrar RUC/razón si aplica
+        $('#txt_ruc').val(dni);
+    }
+
+});
+

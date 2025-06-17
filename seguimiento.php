@@ -28,70 +28,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #084b8a;">
             <div class="container">
-                <a href="seguimiento.php" class="navbar-brand">
-                    <img src="assets/img/logo mixto.png" alt="Logo cole" class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light">TRAMITE DOCUMENTARIO</span>
+                <!-- Logo + Título -->
+                <a href="registrar_tramite.php" class="navbar-brand d-flex align-items-center">
+                    <img src="assets/img/logo mixto.png" alt="Logo" style="width: 50px; height: 50px;" class="mr-2">
+                    <span class="font-weight-bold text-white">I.E.P MIXTO SAN LUIS</span>
                 </a>
 
-                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Botón de colapso -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-                    <!-- Left navbar links -->
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="index.php" class="nav-link"><i class="fa fa-user"></i> Login</a>
+                <!-- Enlaces -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto mr-2">
+                        <li class="nav-item mr-2">
+                            <a href="index.php" class="btn btn-light btn-sm rounded-pill px-3 text-dark font-weight-bold" style="border:none;">
+                                <i class="fa fa-user mr-1"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="registrar_tramite.php" class="btn btn-light btn-sm rounded-pill px-3 text-dark font-weight-bold" style="border:none;">
+                                <i class="fa fa-plus mr-1"></i> Registrar Trámite
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="registrar_tramite.php" class="nav-link"><i class="fa fa-plus"></i> Registrar Trámite</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="seguimiento.php" class="nav-link"><i class="fa fa-search"></i> Seguimiento Trámite</a>
+                            <a href="seguimiento.php" class="btn btn-light btn-sm rounded-pill px-3 text-dark font-weight-bold" style="border:none;">
+                                <i class="fa fa-search mr-1"></i> Seguimiento Trámite
+                            </a>
                         </li>
                     </ul>
-
-                    <!-- SEARCH FORM -->
-                    <form class="form-inline ml-0 ml-md-3">
-                        <div class="input-group input-group-sm">
-                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-navbar" type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
-
             </div>
         </nav>
         <!-- /.navbar -->
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0"> Realizar el Seguimiento de un Trámite</h1>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
 
             <!-- Main content -->
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header bg-primary">
-                                    <h5 class="card-title m-0"><b>Buscador de Trámite</b></h5>
+                        <div class="col-lg-12"><br>
+                            <h1 class="m-0 mb-3 text-center" style="font-size: 1.5rem;"><b>MESA DE PARTES VIRTUAL</b></h1>
+                            <div class="card card-danger card-outline">
+                                <div class="card-header">
+                                    <h3 class="card-title card-header-title" style="font-size: 1.3rem;"><b>Realizar seguimiento del trámite</b></h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -151,15 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside>
         <!-- /.control-sidebar -->
 
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Anything you want
-            </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-        </footer>
+
     </div>
     <!-- ./wrapper -->
 
@@ -171,8 +145,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="plantilla/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="plantilla/dist/js/demo.js"></script>
 
     <script src="js/console_usuario.js?rev=<?php echo time();?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

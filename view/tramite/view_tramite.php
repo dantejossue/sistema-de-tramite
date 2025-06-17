@@ -239,7 +239,7 @@
             <tr>
               <th>#</th>
               <th>Fecha</th>
-              <th>Ubic. Actual</th>
+              <th>Procedencia</th>
               <th>Descripción</th>
             </tr>
           </thead>
@@ -251,7 +251,7 @@
             <tr>
               <th>#</th>
               <th>Fecha</th>
-              <th>Ubic. Actual</th>
+              <th>Procedencia</th>
               <th>Descripción</th>
             </tr>
           </tfoot>
