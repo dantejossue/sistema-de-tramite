@@ -1,0 +1,73 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ["dev", "feature/**"]
+  pull_request:
+    branches: ["dev"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: 🐘 Validar sintaxis PHP
+        run: |
+          find . -name "*.php" -exec php -l {} \;
+
+      - name: 🐳 Construir contenedores Docker
+        run: |
+          docker compose up -d --build
+
+      - name: 🌐 Verificar aplicación web (http://localhost:8080)
+        run: |
+          echo "Esperando a que la app responda en el puerto 8080..."
+          for i in {1..10}; do
+            if curl --silent http://localhost:8080 > /dev/null; then
+              echo "✅ Aplicación web activa"
+              exit 0
+            fi
+            echo "⌛ Esperando..."
+            sleep 5
+          done
+          echo "❌ No se pudo conectar a http://localhost:8080"
+          exit 1
+
+      - name: 🌐 Verificar phpMyAdmin (http://localhost:8081)
+        run: |
+          echo "Esperando a que phpMyAdmin responda en el puerto 8081..."
+          for i in {1..10}; do
+            if curl --silent http://localhost:8081 > /dev/null; then
+              echo "✅ phpMyAdmin activo"
+              exit 0
+            fi
+            echo "⌛ Esperando..."
+            sleep 5
+          done
+          echo "❌ No se pudo conectar a http://localhost:8081"
+          exit 1
+
+      - name: 🛢 Verificar conexión a MySQL desde el contenedor web
+        run: |
+          docker compose exec -T web bash -c "apt-get update && apt-get install -y default-mysql-client"
+
+          echo "⏳ Esperando que el servicio MySQL esté listo..."
+          for i in {1..10}; do
+            docker compose exec -T web bash -c 'mysqladmin ping -h db -uadmin -padmin' && break
+            echo "⌛ Aún no responde MySQL... (intento $i)"
+            sleep 5
+            if [ $i -eq 10 ]; then
+              echo "❌ MySQL no está disponible después de varios intentos"
+              exit 1
+            fi
+          done
+
+          echo "✅ MySQL está activo. Verificando base de datos..."
+          docker compose exec -T web bash -c 'mysql -h db -uadmin -padmin -e "SHOW DATABASES;" | grep sis_tramite'
+
+      - name: 🧹 Apagar contenedores
+        if: always()
+        run: docker compose down -v
