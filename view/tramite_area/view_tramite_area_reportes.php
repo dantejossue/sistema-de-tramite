@@ -40,13 +40,13 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Nro. Expediente:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="number" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label>DNI:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="number" class="form-control" maxlength="8">
                                             </div>
                                         </div>
                                         <div class="col-3">

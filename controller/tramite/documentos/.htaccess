@@ -1,0 +1,5 @@
+# Permitir el acceso a archivos PDF
+<Files *.pdf>
+  Order Allow,Deny
+  Allow from all
+</Files>

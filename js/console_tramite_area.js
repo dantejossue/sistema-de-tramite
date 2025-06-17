@@ -116,7 +116,7 @@ $('#tabla_tramite').on('click','.mas',function(){
     if (data.tramite_archivo && data.tramite_archivo !== "") {
     document.getElementById('tab_archivo').innerHTML = `
         <p><strong>Documento Adjunto:</strong></p>
-        <a href="/sw_tramite/${data.tramite_archivo}" target="_blank">📄 Ver documento</a>`;
+        <a href="/${data.tramite_archivo}" target="_blank">📄 Ver documento</a>`;
     } else {
         document.getElementById('tab_archivo').innerHTML = `
             <p>No se adjuntó ningún documento.</p>
