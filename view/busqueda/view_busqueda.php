@@ -39,18 +39,19 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label>Nro. Expediente:</label>
+                                                <label>Nro. Expediente:</label><label class="span-red">(*)</label>
                                                 <input type="number" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
-                                                <label>DNI:</label>
-                                                <input type="number" class="form-control" maxlength="8">
+                                                <label>Nro. DNI:</label><label class="span-red">(*)</label>
+                                                <input type="number" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-3">
-                                                <button type="button" id="btnBusca" class="btn btn2 btn-danger"><i class="fa fa-search"></i>BUSCAR</button>
+                                            <label for="">&nbsp;</label><br>
+                                            <button class="btn btn-danger" style="width:100%" onclick="Traer_Datos_Seguimiento()"><i class="fa fa-search"></i>&nbsp; Buscar</button>
                                         </div>
                                     </div>
                                 </div>
