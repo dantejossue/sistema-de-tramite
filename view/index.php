@@ -21,7 +21,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>SistemaTramiteDocumentario</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plantilla/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="../plantilla/build/fonts/ionicons.css">
@@ -48,7 +49,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="../utilitario/DataTables/datatables.min.css">
 
   <!-- Select2 -->
-  <link rel="stylesheet" href="../plantilla/plugins/select2/css/select2.min.css"> <!-- modifiqué solo el height:28px a height: none por si algun dia lo necesite -->
+  <link rel="stylesheet" href="../plantilla/plugins/select2/css/select2.min.css">
+  <!-- modifiqué solo el height:28px a height: none por si algun dia lo necesite -->
 
 </head>
 
@@ -128,10 +130,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <li class="demo-navbar-user nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><b><i class="fas fa-user"></i>&nbsp;
-            <?php
-            $nombre = $_SESSION['S_USU_NOMBRE'];
-            echo $nombre;
-            ?>
+              <?php
+              $nombre = $_SESSION['S_USU_NOMBRE'];
+              echo $nombre;
+              ?>
             </b>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
@@ -161,7 +163,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index.php" class="brand-link bg-lightblue">
-        <img src="../assets/img/logo mixto.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="../assets/img/logo mixto.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
         <span class="brand-text font-weight-light"><b>IEP MIXTO SAN LUIS</b></span>
       </a>
 
@@ -173,26 +176,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <img src="../plantilla/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div> -->
           <div class="badge badge-danger" style="font-size: 1rem;">
-            <a href="#" class="d-block ml-2"><?php echo "AREA:  ".$_SESSION['S_AREA_NOMBRE']; ?></a>
+            <a href="#" class="d-block ml-2"><?php echo "AREA:  " . $_SESSION['S_AREA_NOMBRE']; ?></a>
           </div>
         </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-lte-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-lte-widget="treeview" role="menu"
+            data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
               <li class="nav-item">
-                <a href="index.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
+                <a href="index.php"
+                  class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
                   <i class="nav-icon fas fa-home"></i>
                   <p>
                     Inicio
                   </p>
                 </a>
               </li>
-              <li class="nav-item" >
-                <a onclick="cargar_contenido('contenido_principal','tramite/view_tramite.php')" class="nav-link" >
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite/view_tramite.php')" class="nav-link">
                   <i class="nav-icon fas fa-file-signature"></i>
                   <p>
                     Trámites
@@ -224,7 +229,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tipo_documento/view_tipodocumento.php')" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','tipo_documento/view_tipodocumento.php')"
+                  class="nav-link">
                   <i class="nav-icon fas fa-file"></i>
                   <p>
                     Tipos Documentos
@@ -255,12 +261,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
               </li>
-            <?php
+              <?php
             }
             ?>
             <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
               <li class="nav-item">
-                <a href="index.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
+                <a href="index.php"
+                  class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
                   <i class="nav-icon fas fa-home"></i>
                   <p>
                     Inicio
@@ -268,7 +275,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area.php')" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area.php')"
+                  class="nav-link">
                   <i class="nav-icon fas fa-file-signature"></i>
                   <p>
                     Trámites Recibidos
@@ -276,7 +284,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')"
+                  class="nav-link">
                   <i class="nav-icon fas fa-plus"></i>
                   <p>
                     Nuevo Trámite
@@ -284,7 +293,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_seguimiento.php')" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_seguimiento.php')"
+                  class="nav-link">
                   <i class="nav-icon fas fa-search-minus"></i>
                   <p>
                     Seguimiento de Trámites
@@ -292,14 +302,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_reportes.php')" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_reportes.php')"
+                  class="nav-link">
                   <i class="nav-icon fas fa-file-contract"></i>
                   <p>
                     Reportes
                   </p>
                 </a>
               </li>
-            <?php
+              <?php
             }
             ?>
           </ul>
@@ -341,63 +352,90 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-lg-12">
               <div class="card card-primary card-outline">
                 <div class="card-header d-flex">
-                  <h5 class="m-0"><i class="ion ion-md-folder-open mr-1"></i>&nbsp; <b>RESUMEN DE TRÁMITES EN GENERAL: </b></h5>&nbsp;&nbsp;&nbsp;
-                  <h3 id="lbl_tramites" class="card-title card-header-title text-bold" style="font-size: 1.3rem;"></h3>&nbsp;
-                  <h3 id="lbl_tramites" class="card-title card-header-title" style="font-size: 1.3rem;"><b> Trámites en total</b></h3>
+                  <h5 class="m-0"><i class="ion ion-md-folder-open mr-1"></i>&nbsp; <b>RESUMEN DE TRÁMITES EN GENERAL:
+                    </b></h5>&nbsp;&nbsp;&nbsp;
+                  <h3 id="lbl_tramites" class="card-title card-header-title text-bold" style="font-size: 1.3rem;"></h3>
+                  &nbsp;
+                  <h3 id="lbl_tramites" class="card-title card-header-title" style="font-size: 1.3rem;"><b> Trámites en
+                      total</b></h3>
                 </div>
                 <div class="card-body">
                   <div class="row">
-                  <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)' || $_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
-                    <div class="col-lg-4 col-6">
-                      <!-- small box -->
-                      <div class="small-box bg-success">
-                        <div class="inner">
-                          <h5><b>ACEPTADOS</b></h5>
-                          <h3 id="lbl_tramite_aceptado">0</h3>
-                          <p>Total de documentos</p>
+                    <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)' || $_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
+                      <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                          <div class="inner">
+                            <h5><b>ACEPTADOS</b></h5>
+                            <h3 id="lbl_tramite_aceptado">0</h3>
+                            <p>Total de documentos</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-check-circle"></i>
+                          </div>
+                          <!-- <a href="#" class="small-box-footer">Mas... <i class="fas fa-arrow-circle-right"></i></a>-->
                         </div>
-                        <div class="icon">
-                          <i class="fas fa-check-circle"></i>
-                        </div>
-                        <!-- <a href="#" class="small-box-footer">Mas... <i class="fas fa-arrow-circle-right"></i></a>-->
                       </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-4 col-6">
-                      <!-- small box -->
-                      <div class="small-box bg-warning">
-                        <div class="inner">
-                          <h5><b>PENDIENTES</b></h5>
-                          <h3 id="lbl_tramite_pendiente">0</h3>
-                          <p>Total de documentos</p>
+                      <!-- ./col -->
+                      <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                          <div class="inner">
+                            <h5><b>PENDIENTES</b></h5>
+                            <h3 id="lbl_tramite_pendiente">0</h3>
+                            <p>Total de documentos</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-hourglass-half"></i>
+                          </div>
+                          <!-- <a href="#" class="small-box-footer">Mas... <i class="fas fa-arrow-circle-right"></i></a>-->
                         </div>
-                        <div class="icon">
-                          <i class="fas fa-hourglass-half"></i>
-                        </div>
-                        <!-- <a href="#" class="small-box-footer">Mas... <i class="fas fa-arrow-circle-right"></i></a>-->
                       </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-4 col-6">
-                      <!-- small box -->
-                      <div class="small-box bg-danger">
-                        <div class="inner">
-                          <h5><b>RECHAZADOS</b></h5>
-                          <h3 id="lbl_tramite_rechazado">0</h3>
-                          <p>Total de documentos</p>
+                      <!-- ./col -->
+                      <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                          <div class="inner">
+                            <h5><b>RECHAZADOS</b></h5>
+                            <h3 id="lbl_tramite_rechazado">0</h3>
+                            <p>Total de documentos</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-times-circle"></i>
+                          </div>
+                          <!-- <a href="#" class="small-box-footer">Mas... <i class="fas fa-arrow-circle-right"></i></a>-->
                         </div>
-                        <div class="icon">
-                          <i class="fas fa-times-circle"></i>
-                        </div>
-                        <!-- <a href="#" class="small-box-footer">Mas... <i class="fas fa-arrow-circle-right"></i></a>-->
                       </div>
-                    </div>
-                    <!-- ./col -->
+                      <!-- ./col -->
                     <?php } ?>
 
-                    
+
                   </div>
                 </div>
+              </div>
+              <!-- CARRUSEL HMTL -->
+              <div class="card card-olive card-outline">
+                <div class="card-header d-flex">
+                  <h5 class="m-0"><i class="far fa-bell"></i>&nbsp; <b>PANEL INFORMATIVO DE TRÁMITE DOCUMENTARIO
+                    </b></h5>
+                </div>
+                <section class="anuncio-carrusel">
+                  <div class="card-body">
+                    <div class="carrusel-container">
+                      <span id="prev-btn" class="arrow">&#10094;</span>
+                      <div class="carrusel-slide">
+                        <img src="../assets/img/carrusel_1.png" alt="Anuncio 1" />
+                      </div>
+                      <div class="carrusel-slide">
+                        <img src="../assets/img/carrusel_2.png" alt="Anuncio 2" />
+                      </div>
+                      <div class="carrusel-slide">
+                        <img src="../assets/img/carrusel_3.png" alt="Anuncio 3" />
+                      </div>
+                      <span id="next-btn" class="arrow">&#10095;</span>
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
             <!-- /.col-md-6 -->
@@ -427,7 +465,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         Anything you want
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2025 <a href="https://adminlte.io">IEP 21001</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; 2025 <a href="https://adminlte.io">IEP MIXTO SAN LUIS</a>.</strong> All rights reserved.
     </footer>
   </div>
   <!-- ./wrapper -->
@@ -533,46 +571,78 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <script>
     <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
-    Traer_Widget();
-    function Traer_Widget(){
-    $.ajax({
-        "url":"../controller/usuario/controlador_cargar_widget.php",
-        type:'POST',
-    }).done(function(resp){
-        let data = JSON.parse(resp);
-        if(data.length>0){
-          document.getElementById('lbl_tramites').innerHTML = data[0][0]; // total de trámites
-          document.getElementById('lbl_tramite_aceptado').innerHTML = data[0][1]; // aceptados
-          document.getElementById('lbl_tramite_pendiente').innerHTML = data[0][2]; // pendientes
-          document.getElementById('lbl_tramite_rechazado').innerHTML = data[0][3]; // rechazados
-        }
-    })
-    }
+      Traer_Widget();
+      function Traer_Widget() {
+        $.ajax({
+          "url": "../controller/usuario/controlador_cargar_widget.php",
+          type: 'POST',
+        }).done(function (resp) {
+          let data = JSON.parse(resp);
+          if (data.length > 0) {
+            document.getElementById('lbl_tramites').innerHTML = data[0][0]; // total de trámites
+            document.getElementById('lbl_tramite_aceptado').innerHTML = data[0][1]; // aceptados
+            document.getElementById('lbl_tramite_pendiente').innerHTML = data[0][2]; // pendientes
+            document.getElementById('lbl_tramite_rechazado').innerHTML = data[0][3]; // rechazados
+          }
+        })
+      }
     <?php } ?>
 
     <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
-    Traer_Widget_Area();
-    function Traer_Widget_Area(){
-      $.ajax({
-        url: '../controller/usuario/controlador_cargar_widget_area.php',
-        type: 'POST',
-      }).done(function(resp){
-        let data = JSON.parse(resp);
-        if(data.length > 0){
-          document.getElementById('lbl_tramites').innerHTML = data[0][0];
-          document.getElementById('lbl_tramite_aceptado').innerHTML = data[0][1];
-          document.getElementById('lbl_tramite_pendiente').innerHTML = data[0][2];
-          document.getElementById('lbl_tramite_rechazado').innerHTML = data[0][3];
-        }
-      });
-    }
+      Traer_Widget_Area();
+      function Traer_Widget_Area() {
+        $.ajax({
+          url: '../controller/usuario/controlador_cargar_widget_area.php',
+          type: 'POST',
+        }).done(function (resp) {
+          let data = JSON.parse(resp);
+          if (data.length > 0) {
+            document.getElementById('lbl_tramites').innerHTML = data[0][0];
+            document.getElementById('lbl_tramite_aceptado').innerHTML = data[0][1];
+            document.getElementById('lbl_tramite_pendiente').innerHTML = data[0][2];
+            document.getElementById('lbl_tramite_rechazado').innerHTML = data[0][3];
+          }
+        });
+      }
     <?php } ?>
 
-// Al hacer clic en cualquier enlace del sidebar, quitamos la clase 'active' de todos y se la asignamos solo al clickeado
-  $(document).on('click', '.nav-sidebar a', function () {
-    $('.nav-sidebar a').removeClass('active');
-    $(this).addClass('active');
-  });
+    // Al hacer clic en cualquier enlace del sidebar, quitamos la clase 'active' de todos y se la asignamos solo al clickeado
+    $(document).on('click', '.nav-sidebar a', function () {
+      $('.nav-sidebar a').removeClass('active');
+      $(this).addClass('active');
+    });
+
+
+    // script para carrusel de inicio (comunicado)
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelectorAll('.carrusel-slide');
+      let indice = 0;
+
+      function actualizarCarrusel() {
+        slides.forEach((slide, i) => {
+          slide.classList.remove('prev', 'active', 'next');
+          if (i === indice) {
+            slide.classList.add('active');
+          } else if (i === (indice - 1 + slides.length) % slides.length) {
+            slide.classList.add('prev');
+          } else if (i === (indice + 1) % slides.length) {
+            slide.classList.add('next');
+          }
+        });
+      }
+
+      document.getElementById("next-btn").addEventListener("click", () => {
+        indice = (indice + 1) % slides.length;
+        actualizarCarrusel();
+      });
+
+      document.getElementById("prev-btn").addEventListener("click", () => {
+        indice = (indice - 1 + slides.length) % slides.length;
+        actualizarCarrusel();
+      });
+
+      actualizarCarrusel();
+    });
   </script>
 
 </body>
