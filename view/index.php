@@ -542,7 +542,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
 
     function validarDNI(dni) {
-      // Expresión regular: exactamente 8 dígitos numéricos
+      // Expresión regular: exactamente 8  dígitos numéricos
       var regex = /^[0-9]{8}$/;
       return regex.test(dni);
     }
