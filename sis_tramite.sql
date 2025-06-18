@@ -950,3 +950,13 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- MODIFICAR EL PROCEDIMIENTO SP_LISTAR_TRAMITES y en SP_LISTAR_TRAMITE_AREA:
+-- Subconsulta para obtener la fecha del último movimiento PENDIENTE, lo colocan debajo del campo 't.area_destino,'
+        (
+          SELECT mov_fecharegistro
+          FROM movimiento
+          WHERE tramite_id = t.tramite_id AND mov_estado = 'PENDIENTE'
+          ORDER BY mov_fecharegistro DESC
+          LIMIT 1
+        ) AS pendiente_fecha

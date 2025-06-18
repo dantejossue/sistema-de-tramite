@@ -25,16 +25,35 @@ function listar_tramite(){
             {"defaultContent":"<button class='seguimiento btn btn-success btn-sm'><i class='fa fa-search'></i></button>"},
             {"data":"tramite_estado",
                 render: function(data,type,row){
-                if(data=='PENDIENTE'){
-                    return '<span class="badge bg-warning">PENDIENTE</span>'
-                }else if(data=='RECHAZADO'){
-                    return '<span class="badge bg-danger">RECHAZADO</span>'
-                }else if(data=='ARCHIVADO'){
-                    return '<span class="badge bg-gray">ARCHIVADO</span>'
-                }else{
-                    return '<span class="badge bg-success">ACEPTADO</span>'
+                    let estado = '';
+                    let badgeExtra = '';
+                    const estadoActual = data;
+                    const fechaPendiente  = row.pendiente_fecha;
 
-                }
+                    // Calcular días transcurridos desde la fecha de registro
+                    if (estadoActual === 'PENDIENTE' || estadoActual === 'EN ESPERA') {
+                        const fechaInicio = new Date(fechaPendiente );
+                        const hoy = new Date();
+                        const diffTime = Math.abs(hoy - fechaInicio);
+                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                        if (diffDays >= 2) {
+                            badgeExtra = ` <span class="badge bg-danger">+${diffDays} días</span>`;
+                        }
+                    }
+
+                    // Badge de estado
+                    if (estadoActual === 'PENDIENTE') {
+                        estado = '<span class="badge bg-warning">PENDIENTE</span>';
+                    } else if (estadoActual === 'RECHAZADO') {
+                        estado = '<span class="badge bg-danger">RECHAZADO</span>';
+                    } else if (estadoActual === 'ARCHIVADO') {
+                        estado = '<span class="badge bg-gray">ARCHIVADO</span>';
+                    } else {
+                        estado = '<span class="badge bg-success">ACEPTADO</span>';
+                    }
+
+                    return estado + badgeExtra;
                 }
             },
         ],
