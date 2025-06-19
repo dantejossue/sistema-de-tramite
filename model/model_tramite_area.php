@@ -20,6 +20,20 @@ class Modelo_TramiteArea extends conexionBD{
         conexionBD::cerrar_conexion();
     }
 
+    public function Listar_Tramite_Filtrado($idusuario, $estado, $fechaini, $fechafin){
+        $c = conexionBD::conexionPDO();
+        $sql = "CALL SP_LISTAR_TRAMITE_AREA_FILTRO(?, ?, ?, ?)";
+        $query = $c->prepare($sql);
+        $query->bindParam(1, $idusuario);
+        $query->bindParam(2, $estado);
+        $query->bindParam(3, $fechaini);
+        $query->bindParam(4, $fechafin);
+        $query->execute();
+        $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
+        $arreglo["data"] = $resultado;
+        return $arreglo;
+    }
+
     public function Cargar_Select_Tipo(){
         $c = conexionBD::conexionPDO();
         $sql = "CALL SP_CARGAR_SELECT_TIPO()";
@@ -68,16 +82,15 @@ class Modelo_TramiteArea extends conexionBD{
         conexionBD::cerrar_conexion();
     }
 
-    public function Cambiar_Estado_Tramite($idtramite, $estado, $descripcion, $idusuario, $area_origen, $area_destino){
+    public function Cambiar_Estado_Tramite($idtramite, $estado, $descripcion, $idusuario, $area_destino){
         $c = conexionBD::conexionPDO();
-        $sql = "CALL SP_CAMBIAR_ESTADO_TRAMITE(?, ?, ?, ?, ?, ?)";
+        $sql = "CALL SP_CAMBIAR_ESTADO_TRAMITE(?, ?, ?, ?, ?)";
         $query = $c->prepare($sql);
         $query->bindParam(1, $idtramite);
         $query->bindParam(2, $estado);
         $query->bindParam(3, $descripcion);
         $query->bindParam(4, $idusuario);
-        $query->bindParam(5, $area_origen);
-        $query->bindParam(6, $area_destino);
+        $query->bindParam(5, $area_destino);
         $resultado = $query->execute();
         return $resultado;
     }

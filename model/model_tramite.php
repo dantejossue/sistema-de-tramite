@@ -18,6 +18,22 @@ class Modelo_Tramite extends conexionBD{
         conexionBD::cerrar_conexion();
     }
 
+        public function Listar_Tramite_Filtrado($fechaini, $fechafin, $estado, $area) {
+        $c = conexionBD::conexionPDO();
+        $sql = "CALL SP_LISTAR_TRAMITES_FILTRO(?, ?, ?, ?)";
+        $query = $c->prepare($sql);
+        
+        $query->bindParam(1, $fechaini, is_null($fechaini) ? PDO::PARAM_NULL : PDO::PARAM_STR);
+        $query->bindParam(2, $fechafin, is_null($fechafin) ? PDO::PARAM_NULL : PDO::PARAM_STR);
+        $query->bindParam(3, $estado);
+        $query->bindParam(4, $area, PDO::PARAM_INT);
+        
+        $query->execute();
+        $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
+        $arreglo["data"] = $resultado;
+        return $arreglo;
+    }
+
     public function Cargar_Select_Tipo(){
         $c = conexionBD::conexionPDO();
         $sql = "CALL SP_CARGAR_SELECT_TIPO()";

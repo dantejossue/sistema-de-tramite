@@ -1,6 +1,5 @@
 var tbl_tramite;
-function listar_tramite(estado = 'PENDIENTE'){
-    let idusuario = document.getElementById('txtprincipalid').value;
+function listar_tramite(){
     tbl_tramite = $("#tabla_tramite").DataTable({
         "ordering":false,   
         "bLengthChange":true,
@@ -13,9 +12,17 @@ function listar_tramite(estado = 'PENDIENTE'){
         "ajax":{
             "url":"../controller/tramite_area/controlador_listar_tramite.php",
             type:'POST',
-            data: {
-                idusuario: idusuario,
-                estado: estado 
+            data: function(d){
+                let idusuario = document.getElementById('txtprincipalid').value; // Obtener el ID del usuario
+                let fechaInicio = $("#reporte_fecha_inicio").val();
+                let fechaFin = $("#reporte_fecha_fin").val();
+                let estado = $("#select-vista-estado").val();
+
+                // Si ambas fechas están llenas, las enviamos
+                d.idusuario = idusuario;  // Asegúrate de enviar el ID del usuario
+                d.fecha_inicio = (fechaInicio !== "" && fechaFin !== "") ? fechaInicio : "";
+                d.fecha_fin = (fechaInicio !== "" && fechaFin !== "") ? fechaFin : "";
+                d.estado = estado;  // Enviamos el estado
             }
         },
         "columns":[
@@ -536,7 +543,6 @@ function Registrar_Tramite(){
 
 
 function cambiarEstadoTramite(nuevoEstado,data) {
-    let area_origen = data.area_origen;
     let area_destino = data.area_destino;
     let idtramite = document.getElementById('nroexpe_acept').value;
     let descripcion = document.getElementById('des').value;
@@ -550,7 +556,6 @@ function cambiarEstadoTramite(nuevoEstado,data) {
             estado: nuevoEstado,
             descripcion: descripcion,
             idusuario: idusuario,
-            area_origen: area_origen,     // ← asegúrate que estos datos existan
             area_destino: area_destino
         }
     }).done(function(resp) {
