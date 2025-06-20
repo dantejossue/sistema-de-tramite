@@ -33,8 +33,43 @@
           </div>
           <!-- /.card-body -->
           <div class="card-body">
-            <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tramites.php" id="ReportUsu">
-              <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br>
+            <div class="container">
+              <div class="row justify-content-center align-items-end">
+                <div class="col-md-2">
+                  <label>Fecha Inicio</label>
+                  <input type="date" id="reporte_fecha_inicio" class="form-control" onchange="tbl_tramite.ajax.reload();">
+                </div>
+                <div class="col-md-2">
+                  <label>Fecha Fin</label>
+                  <input type="date" id="reporte_fecha_fin" class="form-control" onchange="tbl_tramite.ajax.reload();">
+                </div>
+                <div class="col-md-2">
+                  <label>Estado</label>
+                  <select id="reporte_estado" class="form-control" onchange="tbl_tramite.ajax.reload();">
+                    <option value="">Todos</option>
+                    <option value="PENDIENTE">PENDIENTE</option>
+                    <option value="ACEPTADO">ACEPTADO</option>
+                    <option value="RECHAZADO">RECHAZADO</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label>Área</label>
+                  <select class="js-example-basic-single" id="select_area_filtro" style="width:100%;" onchange="tbl_tramite.ajax.reload();"></select>
+                </div>
+                <div class="col-md-2 text-center">
+                  <label>&nbsp;</label><br>
+                  <button class="btn btn-outline-danger w-100" onclick="generarReporteFiltrado()">
+                    <i class="fas fa-file-pdf">&nbsp;</i> Reporte Filtrado
+                  </button>
+                </div>
+                <div class="col-md-2 text-center">
+                  <label>&nbsp;</label><br>
+                  <a target="_blank" class="btn btn-outline-dark w-100" href="MPDF/REPORTE/reporte_tramites.php">
+                    <i class="fas fa-file-pdf">&nbsp;</i> Reporte General
+                  </a>
+                </div>
+              </div>
+            </div><br>
             <table id="tabla_tramite" class="table table-hover table-data">
               <thead>
                 <tr>
@@ -283,6 +318,17 @@
       document.getElementById('div_juridico').style.display = "block";
     });
   });
+  Cargar_select_Area_filtrado();
   Cargar_Select_Tipo();
   Cargar_select_Area();
+
+  function generarReporteFiltrado() {
+    const fi = $("#reporte_fecha_inicio").val();
+    const ff = $("#reporte_fecha_fin").val();
+    const estado = $("#reporte_estado").val();
+    const area = $("#select_area_filtro").val();
+
+    const url = `MPDF/REPORTE/reporte_tramites_filtro.php?fi=${fi}&ff=${ff}&estado=${estado}&area=${area}`;
+    window.open(url, "_blank");
+  }
 </script>

@@ -31,20 +31,53 @@ session_start();
           <!-- /.card-header -->
           <div class="card-header">
             <h3 class="card-title card-header-title" style="font-size: 1.3rem;"><b>Listado de Trámites</b></h3>
-            <div style="float:right;">
+            <!-- <div style="float:right;">
               <label>Listar por: </label>
-              <select class="select-reporte select-info" id="select-vista-estado">
+              <select class="select-reporte select-info" id="">
+                <option value="">Todos</option>
                 <option value="PENDIENTE">PENDIENTE</option>
                 <option value="ACEPTADO">ACEPTADO</option>
                 <option value="RECHAZADO">RECHAZADO</option>
                 <option value="ARCHIVADO">ARCHIVADO</option>
               </select>
-            </div>
+            </div> -->
           </div>
           <!-- /.card-body -->
           <div class="card-body">
-            <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tramite_area.php?usu_id=<?= $_SESSION['S_ID']; ?>" id="ReportUsu">
-              <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br>
+            <!-- <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tramite_area.php?usu_id=<?= $_SESSION['S_ID']; ?>" id="ReportUsu">
+              <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br> -->
+            <div class="row justify-content-center mb-3">
+              <div class="col-md-2">
+                <label>Fecha Inicio</label>
+                <input type="date" id="reporte_fecha_inicio" class="form-control" onchange="tbl_tramite.ajax.reload();">
+              </div>
+              <div class="col-md-2">
+                <label>Fecha Fin</label>
+                <input type="date" id="reporte_fecha_fin" class="form-control" onchange="tbl_tramite.ajax.reload();">
+              </div>
+              <div class="col-md-2">
+                <label>Estado</label>
+                <select id="select-vista-estado" class="form-control" onchange="tbl_tramite.ajax.reload();">
+                  <option value="">Todos</option>
+                  <option value="PENDIENTE">PENDIENTE</option>
+                  <option value="ACEPTADO">ACEPTADO</option>
+                  <option value="RECHAZADO">RECHAZADO</option>
+                  <option value="ARCHIVADO">ARCHIVADO</option>
+                </select>
+              </div>
+              <div class="col-md-2 text-center">
+                  <label>&nbsp;</label><br>
+                  <button class="btn btn-outline-danger w-100" onclick="generarReporteFiltrado()">
+                    <i class="fas fa-file-pdf">&nbsp;</i> Reporte Filtrado
+                  </button>
+                </div>
+                <div class="col-md-2 text-center">
+                  <label>&nbsp;</label><br>
+                  <a target="_blank" class="btn btn-outline-dark w-100" href="MPDF/REPORTE/reporte_tramite_area.php?usu_id=<?= $_SESSION['S_ID']; ?>" >
+                    <i class="fas fa-file-pdf">&nbsp;</i> Reporte General
+                  </a>
+                </div>
+            </div>
             <table id="tabla_tramite" class="table table-hover table-data">
               <thead>
                 <tr>
@@ -481,12 +514,18 @@ session_start();
 
 <script>
   $(document).ready(function() {
-    listar_tramite($('#select-vista-estado').val());
+    listar_tramite();  // Inicializa la tabla
     $('.js-example-basic-single').select2();
 
-    $('#select-vista-estado').change(function() {
-      let estadoSeleccionado = $(this).val();
-      listar_tramite(estadoSeleccionado); // recarga DataTable filtrando
+    // Cambio de estado
+    $('#select-vista-estado').change(function () {
+        let estadoSeleccionado = $(this).val() || '';  // Asegúrate de que no quede vacío
+        listar_tramite();  // Recarga DataTable filtrando
+    });
+
+    // Cambios en las fechas
+    $('#reporte_fecha_inicio, #reporte_fecha_fin').change(function () {
+        listar_tramite(); // Recarga la tabla cuando se cambian las fechas
     });
   });
   Cargar_Select_Tipo();
@@ -508,5 +547,17 @@ session_start();
   document.getElementById("btnRechazar").addEventListener("click", function() {
     cambiarEstadoTramite("RECHAZADO", dataGlobal);
   });
-  
+
+  function generarReporteFiltrado() {
+    let fechaInicio = $("#reporte_fecha_inicio").val();
+    let fechaFin = $("#reporte_fecha_fin").val();
+    let estado = $("#select-vista-estado").val();
+    let usuId = <?= $_SESSION['S_ID']; ?>;  // Suponiendo que tienes el ID de usuario en la sesión
+
+    // Crear la URL del reporte con los filtros aplicados
+    let url = `MPDF/REPORTE/reporte_tramite_area_filtrado.php?usu_id=${usuId}&fi=${fechaInicio}&ff=${fechaFin}&estado=${estado}`;
+
+    // Redirigir al usuario al reporte
+    window.open(url, '_blank');
+  }
 </script>
