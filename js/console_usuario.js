@@ -463,7 +463,7 @@ function Traer_Datos_Seguimiento(){
                                   '<i class="fas fa-envelope bg-blue"></i>'+
                                   '<div class="timeline-item">'+
                                     '<span class="time"><i class="fas fa-clock"></i>'+datadetalle[i][3]+'</span>'+
-                                    '<h3 class="timeline-header"><a href="#">El Documento fue derivado al Area: '+datadetalle[i][2]+
+                                    '<h3 class="timeline-header"><a href="#">Ubicación del Trámite: '+datadetalle[i][2]+
                                     '</a> - <b>Estado: '+datadetalle[i][5]+' </b></h3>'+
                                     '<div class="timeline-body">'+datadetalle[i][4]+''+
                                     '</div>'+
