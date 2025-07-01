@@ -40,13 +40,13 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Nro. Expediente:</label><label class="span-red">(*)</label>
-                                                <input type="number" class="form-control">
+                                                <input id="txt_numero" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label>Nro. DNI:</label><label class="span-red">(*)</label>
-                                                <input type="number" class="form-control">
+                                                <input id="txt_dni" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-3">
@@ -61,7 +61,30 @@
 
                 </div>
 
-                <div class="card card-olive" id="dat">
+                <div class="card" id="div_buscador" style="display: none;">
+                    <div class="card-header bg-olive">
+                        <h5 class="card-title m-0" id="lbl_titulo"><b>Seguimiento</b></h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" id="div_seguimiento">
+                                <!-- The time line -->
+
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+
+                                <!-- END timeline item -->
+                                <!-- timeline item -->
+                                <div>
+                                    <i class="fas fa-clock bg-gray"></i>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="card card-olive" id="dat">
                     <div class="card-header">
                         <h3 class="card-title font-w-600 d-flex-gap"><i class="fas fa-file-pdf "></i> DATOS DEL TRÁMITE REALIZADO
                         </h3>
@@ -82,8 +105,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
+                </div> -->
+                <!-- /.col-lg-12 -->
+                <!-- /.card-header -->
+                <!-- <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="callout callout-success">
@@ -166,12 +191,56 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
 
-                </div>
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
     </div>
     </div>
+
+
+    <script src="/js/console_usuario.js?rev=<?php echo time(); ?>"></script>
+    <script>
+        function sololetras(e) {
+            var key = e.keyCode || e.which;
+            var teclado = String.fromCharCode(key).toLowerCase();
+            var letras = "qwertyuiopasdfghjklñzxcvbnm ";
+            var especiales = "8-37-38-46-164";
+            var teclado_especial = false;
+
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+        }
+
+        function soloNumeros(e) {
+            var tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) {
+                return true;
+            }
+            var patron = /[0-9]/;
+            var tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+        }
+
+        function validar_email(email) {
+            var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+
+        function validarDNI(dni) {
+            // Expresión regular: exactamente 8 dígitos numéricos
+            var regex = /^[0-9]{8}$/;
+            return regex.test(dni);
+        }
+    </script>

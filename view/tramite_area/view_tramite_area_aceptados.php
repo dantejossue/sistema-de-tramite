@@ -3,7 +3,7 @@ session_start();
 
 date_default_timezone_set('America/Lima');
 ?>
-<script src="../js/console_tramite_area.js?rev=<?php echo time(); ?>"></script>
+<script src="../js/console_tramite_area_aceptados.js?rev=<?php echo time(); ?>"></script>
 <!-- Content Header (Page header) -->
 <div class="content-header">
   <div class="container-fluid">
@@ -57,7 +57,6 @@ date_default_timezone_set('America/Lima');
                 <label>Fecha Fin</label>
                 <input type="date" id="reporte_fecha_fin" class="form-control" onchange="tbl_tramite.ajax.reload();">
               </div>
-    
               <div class="col-md-2 text-center">
                 <label>&nbsp;</label><br>
                 <button class="btn btn-outline-danger w-100" onclick="generarReporteFiltrado()">
@@ -82,7 +81,7 @@ date_default_timezone_set('America/Lima');
                   <th rowspan="2" class="align-middle">Mas datos</th>
                   <th rowspan="2" class="align-middle">Seguimiento</th>
                   <th rowspan="2" class="align-middle">Estado Documento</th>
-                  <!-- <th rowspan="2" class="align-middle">Acción</th> -->
+                  <th rowspan="2" class="align-middle">Acción</th>
                 </tr>
                 <tr>
                   <th>DNI</th>
@@ -255,7 +254,6 @@ date_default_timezone_set('America/Lima');
   </div>
   <!-- /.modal-dialog -->
 </div>
-
 
 
 <!-- MODAL SEGUIMIENTO-->
@@ -536,7 +534,7 @@ date_default_timezone_set('America/Lima');
     let usuId = <?= $_SESSION['S_ID']; ?>; // Suponiendo que tienes el ID de usuario en la sesión
 
     // Crear la URL del reporte con los filtros aplicados
-    let url = `MPDF/REPORTE/reporte_tramite_area_filtrado.php?usu_id=${usuId}&fi=${fechaInicio}&ff=${fechaFin}`;
+    let url = `MPDF/REPORTE/reporte_tramite_area_filtrado_aceptados.php?usu_id=${usuId}&fi=${fechaInicio}&ff=${fechaFin}`;
 
     // Redirigir al usuario al reporte
     window.open(url, '_blank');

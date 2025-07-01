@@ -12,6 +12,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="callout callout-success">
+                            <!-- AVISO INFORMATIVO -->
+                            <div class="alert alert-info mt-3" role="alert">
+                                <strong>Nota:</strong> Si el procedimiento que estás realizando tiene un costo según el <a href="assets/docs/tupa.pdf" target="_blank">TUPA institucional</a>, realiza el pago y consígnalo en el campo “Monto pagado”. El comprobante debe estar dentro del documento adjunto (FUT).
+                            </div>
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <b>Datos del Remitente</b>
@@ -22,7 +26,7 @@
                                     <div class="col-6 form-group">
                                         <label for="" style="font-size:small;">Nº DNI<span class="span-red"> (*)</span></label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="txt_dni" maxlength="8" readonly>
+                                            <input type="text" class="form-control" id="txt_dni" maxlength="8">
                                             <div class="input-group-prepend">
                                                 <button type="button" class="btn btn-success" onclick="Buscar_reniec()"><i class="fa fa-search"></i></button>
                                             </div>
@@ -130,12 +134,32 @@
                                         <textarea id="txt_asunto" rows="3" class="form-control" style="resize:none" placeholder="INGRESE EL ASUNTO DEL DOCUMENTO"></textarea>
                                     </div>
                                     <div class="col-8 form-group">
-                                        <label for="" style="font-size:small;">Adjuntar documento<span class="span-red"> (*)</span></label>
-                                        <input type="file" class="form-control" id="txt_archivo">
+                                        <label for="txt_archivo" style="font-size:small;">ADJUNTAR DOCUMENTO<span class="span-red"> (*)</span></label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="txt_archivo">
+                                            <label class="custom-file-label" for="txt_archivo">Seleccionar archivo</label>
+                                        </div>
                                     </div>
+                                    <!-- <div class="col-8 form-group">
+                                        <div class="custom-file">
+                                            <label for="" style="font-size:small;">Adjuntar documento<span class="span-red"> (*)</span></label>
+                                            <input type="file" class="custom-file-input" id="txt_archivo">
+                                        </div>
+                                    </div> -->
                                     <div class="col-4 form-group">
                                         <label for="" style="font-size:small;">Nº FOLIO<span class="span-red"> (*)</span></label>
                                         <input type="text" class="form-control" id="txt_folio">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label for="txt_monto_pago" style="font-size:small;">MONTO A PAGAR (OPCIONAL)</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="txt_monto_pago" placeholder="Ej: 15.00">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-info" type="button" data-toggle="modal" data-target="#modal_yape_qr">
+                                                    <i class="fas fa-qrcode"></i>&nbsp; Ver QR
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-12"><br>
                                         <div class="form-group clearfix">
@@ -149,6 +173,7 @@
                                     <div class="col-12" style="text-align:center">
                                         <button class="btn btn-success btn-lg" onclick="Registrar_Tramite()" id="btn_registro">REGISTRAR TRAMITE</button>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -163,6 +188,10 @@
 <!-- /.content -->
 
 <script>
+    $('#txt_archivo').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+    });
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
         Cargar_Select_Tipo();

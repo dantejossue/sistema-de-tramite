@@ -7,7 +7,7 @@ date_default_timezone_set('America/Lima');
 $usu_id = $_GET['usu_id']; // Usuario actual
 $fechaini = $_GET['fi'] ?? '';  // Fecha inicio
 $fechafin = $_GET['ff'] ?? '';  // Fecha fin
-$estado = '';  // Estado filtrado
+$estado = 'RECHAZADO';  // Estado filtrado
 
 // Validar y preparar las fechas
 $fecha_ini = ($fechaini == '') ? null : $fechaini;

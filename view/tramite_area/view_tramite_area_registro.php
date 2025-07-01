@@ -189,16 +189,19 @@
 
 </div>
 <!-- /.content -->
-
+<script src="/js/console_tramite_area_registro.js"></script>
 <script>
     $(document).ready(function() {
 
         $('.js-example-basic-single').select2();
         Cargar_Select_Tipo();
+
+        // Esperamos a que se cargue el select de áreas, y recién luego cargamos los datos del usuario
         Cargar_select_Area(function() {
             cargar_datos_usuario_logueado();
         });
 
+        cargar_datos_usuario_logueado();
         $("#rad_presentacion1").on('click', function() {
             document.getElementById('div_juridico').style.display = "none";
         });

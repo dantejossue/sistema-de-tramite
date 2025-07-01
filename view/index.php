@@ -182,8 +182,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-lte-widget="treeview" role="menu"
-            data-accordion="false">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
@@ -261,7 +260,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
               </li>
-              <?php
+            <?php
             }
             ?>
             <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
@@ -274,12 +273,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
               </li>
+
+              <!-- Menú Trámites DESPLEGABLE -->
+              <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                  <i class="nav-icon fas fa-file-signature"></i>
+                  <p>
+                    Trámites
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_pendientes.php')" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Pendientes</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_aceptados.php')" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Aceptados</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_rechazados.php')" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Rechazados</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_archivados.php')" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Archivados</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
               <li class="nav-item">
                 <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area.php')"
                   class="nav-link">
                   <i class="nav-icon fas fa-file-signature"></i>
                   <p>
                     Trámites Recibidos
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_enviados.php')"
+                  class="nav-link">
+                  <i class="nav-icon fas fa-paper-plane"></i>
+                  <p>
+                    Trámites Enviados
                   </p>
                 </a>
               </li>
@@ -310,7 +356,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
               </li>
-              <?php
+            <?php
             }
             ?>
           </ul>
@@ -572,11 +618,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script>
     <?php if ($_SESSION['S_ROL'] == 'ADMINISTRADOR(A)') { ?>
       Traer_Widget();
+
       function Traer_Widget() {
         $.ajax({
           "url": "../controller/usuario/controlador_cargar_widget.php",
           type: 'POST',
-        }).done(function (resp) {
+        }).done(function(resp) {
           let data = JSON.parse(resp);
           if (data.length > 0) {
             document.getElementById('lbl_tramites').innerHTML = data[0][0]; // total de trámites
@@ -590,11 +637,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
       Traer_Widget_Area();
+
       function Traer_Widget_Area() {
         $.ajax({
           url: '../controller/usuario/controlador_cargar_widget_area.php',
           type: 'POST',
-        }).done(function (resp) {
+        }).done(function(resp) {
           let data = JSON.parse(resp);
           if (data.length > 0) {
             document.getElementById('lbl_tramites').innerHTML = data[0][0];
@@ -607,7 +655,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <?php } ?>
 
     // Al hacer clic en cualquier enlace del sidebar, quitamos la clase 'active' de todos y se la asignamos solo al clickeado
-    $(document).on('click', '.nav-sidebar a', function () {
+    $(document).on('click', '.nav-sidebar a', function() {
       $('.nav-sidebar a').removeClass('active');
       $(this).addClass('active');
     });

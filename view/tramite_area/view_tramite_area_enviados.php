@@ -3,7 +3,7 @@ session_start();
 
 date_default_timezone_set('America/Lima');
 ?>
-<script src="../js/console_tramite_area.js?rev=<?php echo time(); ?>"></script>
+<script src="../js/console_tramite_area_enviados.js?rev=<?php echo time(); ?>"></script>
 <!-- Content Header (Page header) -->
 <div class="content-header">
   <div class="container-fluid">
@@ -15,7 +15,7 @@ date_default_timezone_set('America/Lima');
       </div><!-- /.col -->
       <div class="col-sm-1">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><i class="nav-icon fas fa-file-signature"></i>&nbsp; Trámites</li>
+          <li class="breadcrumb-item"><i class="nav-icon fas fa-paper-plane"></i>&nbsp; T. Enviados</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -46,7 +46,7 @@ date_default_timezone_set('America/Lima');
           </div>
           <!-- /.card-body -->
           <div class="card-body">
-            <!-- <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tramite_area.php?usu_id=<?= $_SESSION['S_ID']; ?>" id="ReportUsu">
+            <!-- <a Target="_blank" class="btn btn-flat btn-a bg-gray-dark" href="MPDF/REPORTE/reporte_tramite_area.php?usu_id= id="ReportUsu">
               <i class="nav-iconfas fas fa-file-pdf"></i>&nbsp; Generar Reporte </a> <br><br> -->
             <div class="row justify-content-center mb-3">
               <div class="col-md-2">
@@ -57,7 +57,6 @@ date_default_timezone_set('America/Lima');
                 <label>Fecha Fin</label>
                 <input type="date" id="reporte_fecha_fin" class="form-control" onchange="tbl_tramite.ajax.reload();">
               </div>
-    
               <div class="col-md-2 text-center">
                 <label>&nbsp;</label><br>
                 <button class="btn btn-outline-danger w-100" onclick="generarReporteFiltrado()">
@@ -82,7 +81,6 @@ date_default_timezone_set('America/Lima');
                   <th rowspan="2" class="align-middle">Mas datos</th>
                   <th rowspan="2" class="align-middle">Seguimiento</th>
                   <th rowspan="2" class="align-middle">Estado Documento</th>
-                  <!-- <th rowspan="2" class="align-middle">Acción</th> -->
                 </tr>
                 <tr>
                   <th>DNI</th>
@@ -303,240 +301,34 @@ date_default_timezone_set('America/Lima');
   <!-- /.modal-dialog -->
 </div>
 
-<!-- MODAL DERIVACION-->
-<div class="modal fade" id="modalderivar">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" id="modal-header">
-        <h4 class="modal-title modal-title-h4" id="modal-title">Derivar/Finalizar Trámite:</h4>&nbsp;&nbsp;
-        <h4 id="nro_expe2" class="modal-title modal-title-h4" style="color: brown;"></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Fecha: </label><span class="span-red"> (*)</span>
-              <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                <input class="input-date" readonly="" type="text" id="datepicker1" value="<?php echo $fechaActual = date('d/m/Y'); ?>">
-                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Acción: </label><span class="span-red"> (*)</span>
-              <select class="select-new" id="select_accion">
-                <option value="DERIVAR">DERIVAR</option>
-                <option value="ARCHIVAR">ARCHIVAR</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div id="div_derivar">
-          <div class="row">
-            <div class="col-sm-6 div_derivar">
-              <div class="form-group">
-                <label>Área Origen: </label><span class="span-red"> (*)</span>
-                <input type="text" class="form-control input-form" id="idorigen" readonly="">
-              </div>
-            </div>
-            <div class="col-sm-6 div_derivar">
-              <div class="form-group">
-                <label>Área Destino: </label><span class="span-red"> (*)</span>
-                <select class="select-new" id="select_area_d_deri" style="width:100%"></select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group div_derivar">
-              <label>Anexar Documento: </label><span class="span-gray">(Opcional)</span>
-              <input type="file" class="form-control" id="file_derivacion"></input>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group">
-              <label>Descripción: </label><span class="span-gray">(Opcional)</span>
-              <textarea class="form-control" id="iddescripcion" placeholder="Ingrese la descripción..."></textarea>
-            </div>
-          </div>
-        </div>
-        <input type="text" id="txt_idtramite_de" hidden>
-        <input type="text" id="txt_idarea_origen" hidden>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn1  btn-danger" data-dismiss="modal" onclick="limpiarderivacion()">Cancelar</button>
-        <button type="button" class="btn btn1 btn-primary" onclick="Registrar_Derivacion()">Registrar</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-<!-- MODAL FINALIZACION-->
-<div class="modal fade" id="modalarchivar">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" id="modal-header">
-        <h4 class="modal-title modal-title-h4" id="modal-title">Finalizar/Archivar Trámite:</h4>&nbsp;&nbsp;
-        <h4 id="nro_expe3" class="modal-title modal-title-h4" style="color: brown;"></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">x</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group">
-              <label>Fecha: </label><span class="span-red"> (*)</span>
-              <div class="input-group date" id="reservationdate_ar" data-target-input="nearest">
-                <input class="input-date" readonly="" type="text" id="datepicker1_ar" value="<?php echo $fechaActual = date('d/m/Y'); ?>">
-                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group">
-              <label>Descripción: </label><span class="span-gray">(Opcional)</span>
-              <textarea class="form-control" id="iddescripcion_ar" placeholder="Ingrese la descripción..."></textarea>
-            </div>
-          </div>
-        </div>
-        <input type="text" id="txt_idtramite_ar" hidden>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn1  btn-danger" data-dismiss="modal" onclick="limpiarderivacion()">Cancelar</button>
-        <button type="button" class="btn btn1 btn-primary" onclick="Registrar_Archivado()">Registrar</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-<!-- MODAL DE ACEPTACION-->
-<div class="modal fade" id="modalacept">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" id="modal-header">
-        <h4 class="modal-title modal-title-h4" id="modal-title">Aceptar/Rechazar trámite:</h4>&nbsp;&nbsp;
-        <h4 id="nro_expe4" class="modal-title modal-title-h4" style="color: brown;"></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">x</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>N° Documento </label><span class="span-red"> (*)</span>
-              <input type="text" class="form-control input-form" id="nrodoc_acept" disabled>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>N° Folios </label><span class="span-red"> (*)</span>
-              <input type="number" class="form-control input-form" id="nrofol_acept" disabled>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>N° Expediente </label><span class="span-red"> (*)</span>
-              <input type="text" class="form-control input-form" id="nroexpe_acept" disabled>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Estado </label><span class="span-red"> (*)</span>
-              <input type="text" class="form-control input-form" id="estado_acept" disabled>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Tipo</label><span class="span-red"> (*)</span>
-              <input type="text" class="form-control input-form" id="tipodoc_acept" disabled>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Asunto </label><span class="span-red"> (*)</span>
-              <textarea disabled class="form-control input-form" rows="3" id="asunto_acept"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group">
-              <label>Descripción: </label><span class="span-gray">(Opcional)</span>
-              <textarea class="form-control" rows="3" id="des" placeholder="Ingrese la descripción..."></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn1 btn-primary" data-dismiss="modal" id="btnCerra">Cerrar</button>
-        <div class="justify-content-between">
-          <button type="button" class="btn btn1 btn-success ms-2" id="btnAceptar">Aceptar</button>
-          <button type="button" class="btn btn1 btn-danger" id="btnRechazar">Rechazar</button>
-        </div>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-
 <script>
   $(document).ready(function() {
-    listar_tramite();  // Inicializa la tabla
+    // Primero carga los select tipo, luego área, y luego la tabla
+    Cargar_Select_Tipo(function() {
+      Cargar_select_Area(function() {
+        listar_tramite(); // Solo aquí se ejecuta la tabla
+      });
+    });
+
+    // Activa select2
     $('.js-example-basic-single').select2();
-  });
-  Cargar_Select_Tipo();
-  Cargar_select_Area();
-  Cargar_select_Area_Destino();
 
-  $('#select_accion').change(function() {
-    let accion = this.value;
-    let x = document.getElementsByClassName('div_derivar');
-    for (let i = 0; i < x.length; i++) {
-      x[i].style.display = (accion === "DERIVAR") ? 'block' : 'none';
-    }
-  });
-
-  document.getElementById("btnAceptar").addEventListener("click", function() {
-    cambiarEstadoTramite("ACEPTADO", dataGlobal);
-  });
-
-  document.getElementById("btnRechazar").addEventListener("click", function() {
-    cambiarEstadoTramite("RECHAZADO", dataGlobal);
+    // Cambios en las fechas
+    $('#reporte_fecha_inicio, #reporte_fecha_fin').change(function() {
+      if (typeof tbl_tramite !== 'undefined') {
+        tbl_tramite.ajax.reload(); // Solo si está definido
+      }
+    });
   });
 
   function generarReporteFiltrado() {
     let fechaInicio = $("#reporte_fecha_inicio").val();
     let fechaFin = $("#reporte_fecha_fin").val();
+    let estado = $("#select-vista-estado").val();
     let usuId = <?= $_SESSION['S_ID']; ?>; // Suponiendo que tienes el ID de usuario en la sesión
 
     // Crear la URL del reporte con los filtros aplicados
-    let url = `MPDF/REPORTE/reporte_tramite_area_filtrado.php?usu_id=${usuId}&fi=${fechaInicio}&ff=${fechaFin}`;
+    let url = `MPDF/REPORTE/reporte_tramite_area_filtrado.php?usu_id=${usuId}&fi=${fechaInicio}&ff=${fechaFin}&estado=${estado}`;
 
     // Redirigir al usuario al reporte
     window.open(url, '_blank');

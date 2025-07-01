@@ -34,6 +34,31 @@ class Modelo_TramiteArea extends conexionBD{
         return $arreglo;
     }
 
+    public function Listar_Tramite_Derivados($idusuario, $estado, $fechaini, $fechafin) {
+        $c = conexionBD::conexionPDO();
+        $sql = "CALL SP_LISTAR_TRAMITE_AREA_DERIVADOS(?,?,?,?)";  // Añadimos los parámetros de fecha
+        $arreglo = array();
+        $query = $c->prepare($sql);
+        $query->bindParam(1, $idusuario);
+        $query->bindParam(2, $estado);
+        // Si las fechas están vacías, enviamos NULL
+        $query->bindParam(3, $fechaini, PDO::PARAM_STR);
+        $query->bindParam(4, $fechafin, PDO::PARAM_STR);
+        $query->execute();
+        $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($resultado) > 0) {
+            foreach ($resultado as $resp) {
+                $arreglo["data"][] = $resp;
+            }
+        } else {
+            $arreglo["data"] = [];
+        }
+
+        return $arreglo;
+        conexionBD::cerrar_conexion();
+    }
+
     public function Cargar_Select_Tipo(){
         $c = conexionBD::conexionPDO();
         $sql = "CALL SP_CARGAR_SELECT_TIPO()";

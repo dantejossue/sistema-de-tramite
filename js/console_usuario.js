@@ -432,7 +432,7 @@ function Traer_Datos_Seguimiento(){
     return Swal.fire("Mensaje de Advertencia!","Llene los campos vacíos","warning");
   }
   $.ajax({ //Realizar la Petición AJAX para Obtener los Datos
-      "url":"controller/usuario/controlador_traer_seguimiento.php", //Especifica la URL del controlador que obtendrá los datos desde la base de datos.
+      "url":"/controller/usuario/controlador_traer_seguimiento.php", //Especifica la URL del controlador que obtendrá los datos desde la base de datos.
       type:'POST',
       data: {
         numero:numero,
@@ -450,7 +450,7 @@ function Traer_Datos_Seguimiento(){
                         '</div>'; 
             //Ajax para el detalle del seguimiento            
             $.ajax({ //Realizar la Petición AJAX para Obtener los Datos
-                  "url":"controller/usuario/controlador_traer_seguimiento_detalle.php", //Especifica la URL del controlador que obtendrá los datos desde la base de datos.
+                  "url":"/controller/usuario/controlador_traer_seguimiento_detalle.php", //Especifica la URL del controlador que obtendrá los datos desde la base de datos.
                   type:'POST',
                   data: {
                     codigo:data[0][0]

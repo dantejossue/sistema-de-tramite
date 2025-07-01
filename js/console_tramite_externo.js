@@ -402,11 +402,11 @@ $(document).ready(function() {
 
     if (tipoPersona === 'natural') {
         $('#rad_presentacion1').prop('checked', true);
-        $('#txt_dni').val(dni);
+        $('#txt_dni').val(dni).prop('readonly', true); // Hacer el campo DNI de sólo lectura
     } else if (tipoPersona === 'juridica') {
         $('#rad_presentacion2').prop('checked', true);
         $('#div_juridico').show(); // Mostrar RUC/razón si aplica
-        $('#txt_ruc').val(dni);
+        $('#txt_ruc').val(dni).prop('readonly', true); // Hacer el campo RUC de sólo lectura
     }
 
 });

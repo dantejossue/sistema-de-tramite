@@ -167,44 +167,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- ./wrapper -->
 
-    <!-- MODAL REGISTRAR_PAGO -->
-    <div class="modal fade" id="modal_registrar_pago">
-        <div class="modal-dialog modal-lg">
+    <!-- MODAL REGISTRAR PAGO -->
+    <div class="modal fade" id="modal_yape_qr">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Registrar Pago</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-wallet"></i>&nbsp; Método de pago: Yape</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <div class="container-yape">
-                            <img src="assets/img/yape.png" alt="Logo" class="logo-yape">
-                            <div class="info-yape">
-                                <p>997 558 341</p>
-                                <p>Colegio Mixto San Luis</p>
-                                <p>Carmen Yauri Aburto</p>
-                            </div>
-                        </div>
+                <div class="modal-body text-center">
+                    <p class="text-dark mb-2">
+                        <strong>Realiza el pago únicamente si el TUPA indica que tu trámite tiene un costo.</strong><br>
+                        Adjunta el comprobante de pago en el documento fut.
+                    </p>
+
+                    <!-- Imagen QR o logo de Yape -->
+                    <img src="assets/img/qr_yape.jpg" alt="QR Yape" class="img-fluid mb-3" style="max-height: 180px;">
+
+                    <!-- Información de pago -->
+                    <div class="mb-3">
+                        <h5 class="mb-0 text-primary">997 558 341</h5>
+                        <small class="text-dark">Colegio Mixto San Luis</small><br>
+                        <small class="text-dark">Carmen Yauri Aburto</small>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="col-sm-4 mt-2 mb-2 d-flex">
-                            <label class="m-2">Monto(S/): </label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Registrar pago</button>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-    <!-- /.MODAL -->
+
 
 
 

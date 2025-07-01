@@ -144,7 +144,7 @@ function listar_tramite(){
                 d.idusuario = idusuario;  // Asegúrate de enviar el ID del usuario
                 d.fecha_inicio = (fechaInicio !== "" && fechaFin !== "") ? fechaInicio : "";
                 d.fecha_fin = (fechaInicio !== "" && fechaFin !== "") ? fechaFin : "";
-                d.estado = '';  // Enviamos el estado
+                d.estado = 'RECHAZADO';  // Enviamos el estado
             }
         },
         "columns":[
@@ -186,21 +186,21 @@ function listar_tramite(){
                     return estado + badgeExtra;
                 }
             },
-            // {"data":"tramite_estado",
-            //     render: function(data,type,row){
+            {"data":"tramite_estado",
+                render: function(data,type,row){
 
-            //         let areaActual = row.area_destino_id;
+                    let areaActual = row.area_destino_id;
 
-            //         if(data=='PENDIENTE' && areaActual == 'MESA DE PARTES'){
-            //             return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp";
-            //         }else if(data=='PENDIENTE' && areaActual != 'MESA DE PARTES'){
-            //             return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp;\
-            //                     <button class='aceptar btn btn-secondary btn-sm'><i class='fas fa-ellipsis-h text-white'></i></button>";
-            //         }else{
-            //             return "<button class='archivar btn btn-warning btn-sm'><i class='fas fa-archive'></i></button>"
-            //         }
-            //     }
-            // },
+                    if(data=='PENDIENTE' && areaActual == 'MESA DE PARTES'){
+                        return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp";
+                    }else if(data=='PENDIENTE' && areaActual != 'MESA DE PARTES'){
+                        return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp;\
+                                <button class='aceptar btn btn-secondary btn-sm'><i class='fas fa-ellipsis-h text-white'></i></button>";
+                    }else{
+                        return "<button class='archivar btn btn-warning btn-sm'><i class='fas fa-archive'></i></button>"
+                    }
+                }
+            },
         ],
   
         "language":idioma_espanol,
@@ -270,36 +270,6 @@ $('#tabla_tramite').on('click','.archivar',function(){
     document.getElementById('nro_expe3').innerHTML = data.tramite_id;   
 })
 
-// function cargar_datos_usuario_logueado() {
-//     let idusuario = document.getElementById('txtprincipalid').value;
-
-//     $.ajax({
-//         url: '../controller/tramite_area/controlador_cargar_datos_persona_usuario.php',
-//         type: 'POST',
-//         data: { idusuario: idusuario },
-//         success: function(resp) {
-//             let data = JSON.parse(resp);
-
-//             if (data) {
-//                 document.getElementById('txt_dni').value = data.per_nrodocumento;
-//                 document.getElementById('txt_nom').value = data.per_nombre;
-//                 document.getElementById('txt_apepat').value = data.per_apepat;
-//                 document.getElementById('txt_apemat').value = data.per_apemat;
-//                 document.getElementById('txt_celular').value = data.per_movil;
-//                 document.getElementById('txt_email').value = data.per_email;
-//                 document.getElementById('txt_dire').value = data.per_direccion;
-
-//                 // Seleccionamos automáticamente su área de origen
-//                 // document.getElementById('txt_area_p').value = data.area_nombre;
-
-//                 Cargar_select_Area_Destino(data.area_id);
-//                 $("#select_area_p").select2().val(data.area_id).trigger('change.select2');
-//             }
-//         }
-//     });
-// }
-
-
 var tbl_seguimiento;
 function listar_tramite_seguimiento(id){
     tbl_seguimiento = $("#tablaSeguimiento").DataTable({
@@ -337,220 +307,24 @@ function listar_tramite_seguimiento(id){
       });
 }
 
-function Buscar_reniec() {
-    let dni = document.getElementById("txt_dni").value.trim();
-
-    if (dni.length !== 8 || isNaN(dni)) {
-        alert("Ingrese un DNI válido de 8 dígitos.");
+function mostrarArchivoTramite(archivoRuta) {
+    if (!archivoRuta || archivoRuta.trim() === "") {
+        $("#archivo_preview").html("<p>No hay archivo adjunto</p>");
         return;
     }
 
-    let url = `../controller/tramite/controlador_consulta_dni.php?dni=${dni}`;
+    let baseURL = window.location.origin;
+    let fullURL = baseURL + '/' + archivoRuta;
+    let extension = archivoRuta.split('.').pop().toLowerCase();
+    let previewHTML = "";
 
-    fetch(url)
-    .then(response => response.json())
-    .then(datos => {
-        console.log("Respuesta de la API:", datos);
-
-        if (datos.success) {
-            // Llenar los campos con los datos obtenidos
-            document.getElementById("txt_nom").value = datos.data.nombres;
-            document.getElementById("txt_apepat").value = datos.data.apellidoPaterno;
-            document.getElementById("txt_apemat").value = datos.data.apellidoMaterno;
-        } else {
-            alert("DNI no encontrado en la API.");
-        }
-    })
-    .catch(error => console.error("Error en la petición:", error));
-}
-
-function limpiarderivacion(){
-    document.getElementById('iddescripcion').value ="";
-}
-
-
-function Registrar_Derivacion(){
-    //capturando datos
-    //Datos del remitente
-    let idtra = document.getElementById('txt_idtramite_de').value;
-    let orig = document.getElementById('txt_idarea_origen').value;
-    let dest = document.getElementById('select_area_d_deri').value;
-    let desc = document.getElementById('iddescripcion').value;
-    let arc = document.getElementById('file_derivacion').value;
-    let idusu = document.getElementById('txtprincipalid').value;
-
-    let accion =  document.getElementById('select_accion').value;
-
-    let nombrearchivo = "";
-
-    if(accion === 'DERIVAR' && dest === 'Seleccione un Area'){
-        Swal.fire("Mensaje de Advertencia","Seleccionar el Area de Destino","warning");
-        return;
-    }
-    if(arc==""){
-
-    }else{
-        let f = new Date();
-        let extension = arc.split('.').pop(); //DOCUMENTO.PPT
-        nombrearchivo="ARCH"+f.getDate()+""+(f.getMonth()+1)+""+f.getFullYear()+""+f.getHours()+""+f.getMilliseconds()+"."+extension;
-    }
-    let formData = new FormData();
-    let archivoobj = $("#file_derivacion")[0].files[0]; //El objeto del archivo adjuntado
-
-    formData.append("idtra",idtra);
-    formData.append("orig",orig);
-    formData.append("dest",dest);
-    formData.append("desc",desc);
-    formData.append("idusu",idusu);
-    formData.append("nombrearchivo",nombrearchivo);
-    formData.append("archivoobj",archivoobj);
-    
-    
-    $.ajax({
-        url:'../controller/tramite_area/controlador_registro_tramite.php',
-        type:'POST',
-        data:formData,
-        contentType:false,
-        processData:false,
-        success:function(resp){
-            if(resp.length>0){
-                Swal.fire("Mensaje de Confirmación","Nuevo Trámite Derivado o Finalizado ","success").then((value)=>{
-                    $("#modalderivar").modal('hide');
-                    tbl_tramite.ajax.reload();  //vuelva a actualizar la tabla
-                });
-            }else{
-                Swal.fire("Mensaje de Advertencia","No se pudo completar el proceso","warning");
-            }
-        }
-    });
-    return false;
-}
-
-function Registrar_Tramite(){
-    //capturando datos
-    //Datos del remitente
-    let dni = document.getElementById('txt_dni').value;
-    let nom = document.getElementById('txt_nom').value;
-    let apt = document.getElementById('txt_apepat').value;
-    let apm = document.getElementById('txt_apemat').value;
-    let cel = document.getElementById('txt_celular').value;
-    let ema = document.getElementById('txt_email').value;
-    let dir = document.getElementById('txt_dire').value;
-    let idusu = document.getElementById('txtprincipalid').value;
-
-    let presentacion = document.getElementsByName('r1');
-    let vpresentacion = "";
-    for(let i=0;i<presentacion.length;i++){
-        if(presentacion[i].checked){
-            vpresentacion=presentacion[i].value;
-        }
+    if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+        previewHTML = `<img src="${fullURL}" class="img-fluid" style="max-width: 100%; height: auto;">`;
+    } else if (extension === "pdf") {
+        previewHTML = `<iframe src="${fullURL}" width="100%" height="500px"></iframe>`;
+    } else {
+        previewHTML = `<a href="${fullURL}" target="_blank" class="btn btn-primary">Descargar Archivo</a>`;
     }
 
-    let ruc = document.getElementById('txt_ruc').value;
-    let raz = document.getElementById('txt_razon').value;
-
-    //Datos del documento
-    let arp = document.getElementById('select_area_p').value;
-    let ard = document.getElementById('select_area_d').value;
-    let tip = document.getElementById('select_tipo').value;
-    let ndo = document.getElementById('txt_ndocumento').value;
-    let asu = document.getElementById('txt_asunto').value;
-    let arc = document.getElementById('txt_archivo').value;
-    let fol = document.getElementById('txt_folio').value;
-
-    
-    if(arc.length==0){
-        return Swal.fire("Mensaje de Advertencia","Seleccione algún tipo de documento","warning");
-    }
-    
-    let extension = arc.split('.').pop(); //DOCUMENTO.PPT
-    let nombrearchivo = "";
-    let f = new Date();
-
-    if(arc.length>0){
-        nombrearchivo="ARCH"+f.getDate()+""+(f.getMonth()+1)+""+f.getFullYear()+""+f.getHours()+""+f.getMilliseconds()+"."+extension;
-    }
-
-    if(dni.length==0 || nom.length==0 || apt.length==0 || apm.length==0 || cel.length==0 || ema.length==0 || dir.length==0 ){
-        return Swal.fire("Mensaje de Advertencia","Llene todos los datos del remitente","warning");
-    }
-
-    if(arp.length==0 || ard.length==0 || tip.length==0 || ndo.length==0 || asu.length==0 || fol.length==0 ){
-        return Swal.fire("Mensaje de Advertencia","Llene todos los datos del documento","warning");
-    }
-
-    let formData = new FormData();
-    let archivoobj = $("#txt_archivo")[0].files[0]; //El objeto del archivo adjuntado
-
-    //Datos del remitente
-    formData.append("dni",dni);
-    formData.append("nom",nom);
-    formData.append("apt",apt);
-    formData.append("apm",apm);
-    formData.append("cel",cel);
-    formData.append("ema",ema);
-    formData.append("dir",dir);
-    formData.append("vpresentacion",vpresentacion);
-    formData.append("ruc",ruc);
-    formData.append("raz",raz);
-    /////////////
-
-    //Datos del documento
-    formData.append("arp",arp);
-    formData.append("ard",ard);
-    formData.append("tip",tip);
-    formData.append("ndo",ndo);
-    formData.append("asu",asu);
-    formData.append("nombrearchivo",nombrearchivo);
-    formData.append("fol",fol);
-    formData.append("archivoobj",archivoobj);
-    formData.append("idusu",idusu);
-
-    $.ajax({
-        url:'../controller/tramite/controlador_registro_tramite.php',
-        type:'POST',
-        data:formData,
-        contentType:false,
-        processData:false,
-        success:function(resp){
-            if(resp.length>0){
-                Swal.fire("Mensaje de Confirmación","Nuevo Trámite registrado codigo "+resp,"success").then((value)=>{
-                    window.open("MPDF/REPORTE/ticket_tramite.php?codigo="+resp+"#zoom=100");
-                    $("#contenido_principal").load("tramite_area/view_tramite_area_registro.php");
-                });
-            }else{
-                Swal.fire("Mensaje de Advertencia","El Usuario ingresado ya se encuentra en la base de datos","warning");
-            }
-        }
-    });
-    return false;
-}
-
-
-function cambiarEstadoTramite(nuevoEstado,data) {
-    let area_destino = data.area_destino;
-    let idtramite = document.getElementById('nroexpe_acept').value;
-    let descripcion = document.getElementById('des').value;
-    let idusuario = document.getElementById('txtprincipalid').value;
-    
-    $.ajax({
-        url:'../controller/tramite_area/controlador_estado_tramite.php',
-        type: 'POST',
-        data: {
-            idtramite: idtramite,
-            estado: nuevoEstado,
-            descripcion: descripcion,
-            idusuario: idusuario,
-            area_destino: area_destino
-        }
-    }).done(function(resp) {
-        if (resp > 0) {
-            Swal.fire("Éxito", "El trámite fue " + nuevoEstado.toLowerCase(), "success").then(() => {
-                $("#modalacept").modal("hide");
-                tbl_tramite.ajax.reload();
-            });
-        } else {
-            Swal.fire("Error", "No se pudo cambiar el estado", "error");
-        }
-    });
+    $("#archivo_preview").html(previewHTML);
 }
