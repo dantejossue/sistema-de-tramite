@@ -145,6 +145,7 @@ function Registrar_Tramite(){
     let ema = document.getElementById('txt_email').value;
     let dir = document.getElementById('txt_dire').value;
     let idusu = null;
+    let mon = document.getElementById('txt_monto_pago').value;
 
     let presentacion = document.getElementsByName('r1');
     let vpresentacion = "";
@@ -190,6 +191,11 @@ function Registrar_Tramite(){
     let formData = new FormData();
     let archivoobj = $("#txt_archivo")[0].files[0]; //El objeto del archivo adjuntado
 
+    // Validar el tamaño del archivo
+    if (archivoobj && archivoobj.size > 5 * 1024 * 1024) {  // 5MB en bytes
+        return Swal.fire("Archivo demasiado grande", "El tamaño máximo permitido es 5MB.", "error");
+    }
+
     //Datos del remitente
     formData.append("dni",dni);
     formData.append("nom",nom);
@@ -213,9 +219,10 @@ function Registrar_Tramite(){
     formData.append("fol",fol);
     formData.append("archivoobj",archivoobj);
     formData.append("idusu",idusu);
+    formData.append("mon", mon);
 
     $.ajax({
-        url:'controller/tramite_externo/controlador_registro_tramite_externo.php',
+        url:'controller/tramite_externo/controlador_registro_tramite_externo_pago.php',
         type:'POST',
         data:formData,
         contentType:false,
@@ -302,9 +309,6 @@ function Buscar_reniec() {
     .catch(error => console.error("Error en la petición:", error));
 }
 
-function ver_comprobante(){
-
-}
 
 $('#ver_pago').on('click',function(){
     $("#modal_registrar_pago").modal('show');

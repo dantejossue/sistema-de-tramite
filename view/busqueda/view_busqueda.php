@@ -60,25 +60,112 @@
                     </div>
                 </div>
 
-                <div class="card" id="div_buscador" style="display: none;">
-                    <div class="card-header bg-olive">
-                        <h5 class="card-title m-0" id="lbl_titulo"><b>Seguimiento</b></h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12" id="div_seguimiento">
-                                <!-- The time line -->
-
-                                <!-- /.timeline-label -->
-                                <!-- timeline item -->
-
-                                <!-- END timeline item -->
-                                <!-- timeline item -->
-                                <div>
-                                    <i class="fas fa-clock bg-gray"></i>
+                <div class="col-md-12" id="div_detalle_tramite" style="display: none;">
+                    <div class="card">
+                        <div class="card-header bg-orange">
+                            <h5 class="card-title font-w-600 d-flex-gap text-white"><i class="fas fa-file-alt"></i> Información del Trámite</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <table border="2" class="table-doc table-data table-striped mb-0" cellspacing="0" cellpadding="5" id="tableDoc">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">
+                                                    <h5 class="font-w-600">DATOS DEL DOCUMENTO</h5>
+                                                    </font>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Expediente</th>
+                                                <td>
+                                                    <p id="celdaexpe"></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>N° Documento</th>
+                                                <td>
+                                                    <p id="celdanro"></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tipo</th>
+                                                <td>
+                                                    <p id="celdatipo"></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Asunto</th>
+                                                <td>
+                                                    <p id="celdasunto"></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm-6">
+                                    <table border="2" class="table-remi table-data table-striped mb-0" cellspacing="0" cellpadding="5" id="tableRemitente">
+                                        <tr>
+                                            <th colspan="2">
+                                                <h5 class="font-w-600">DATOS DEL REMITENTE</h5>
+                                                </font>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>DNI</th>
+                                            <td>
+                                                <p id="celdadni"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Apellidos y Nombres</th>
+                                            <td>
+                                                <p id="celdanombre"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>RUC</th>
+                                            <td>
+                                                <p id="celdaruc"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Entidad</th>
+                                            <td>
+                                                <p id="celdaenti"></p>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
-                            <!-- /.col -->
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12" id="div_buscador" style="display: none;">
+                    <div class="card">
+                        <div class="card-header bg-primary">
+                            <h5 class="card-title m-0" id="lbl_titulo"><b>Seguimiento</b></h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12" id="div_seguimiento">
+                                    <!-- The time line -->
+
+                                    <!-- /.timeline-label -->
+                                    <!-- timeline item -->
+
+                                    <!-- END timeline item -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-clock bg-gray"></i>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
                         </div>
                     </div>
                 </div>

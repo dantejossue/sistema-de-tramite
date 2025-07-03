@@ -74,6 +74,48 @@ class Modelo_Tramite extends conexionBD{
         conexionBD::cerrar_conexion();
     }
 
+    public function Registrar_Tramite_Pago($dni,$nom,$apt,$apm,$cel,$ema,$dir,$vpresentacion,$ruc,$raz,$arp,$ard,$tip,$ndo,$asu,$ruta,$fol,$idusu,$monto){
+        $c = conexionBD::conexionPDO();
+
+        // Para el trámite externo, las áreas son siempre "EXTERNO" y "MESA DE PARTES"
+        $arp = 19; // Área de origen para trámite externo
+        $ard = 17; // Área de destino siempre "MESA DE PARTES"
+
+        $sql = "CALL SP_REGISTRAR_TRAMITE_EXTERNO(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $query = $c->prepare($sql);
+
+        // Enlazar parámetros
+        $query->bindParam(1, $dni);
+        $query->bindParam(2, $nom);
+        $query->bindParam(3, $apt);
+        $query->bindParam(4, $apm);
+        $query->bindParam(5, $cel);
+        $query->bindParam(6, $ema);
+        $query->bindParam(7, $dir);
+        $query->bindParam(8, $vpresentacion);
+        $query->bindParam(9, $ruc);
+        $query->bindParam(10, $raz);
+        $query->bindParam(11, $arp); // Usamos "EXTERNO"
+        $query->bindParam(12, $ard); // Usamos "MESA DE PARTES"
+        $query->bindParam(13, $tip);
+        $query->bindParam(14, $ndo);
+        $query->bindParam(15, $asu);
+        $query->bindParam(16, $ruta);
+        $query->bindParam(17, $fol);
+        $query->bindParam(18, $idusu);
+        $query->bindParam(19, $monto, PDO::PARAM_STR);
+
+        // Ejecutar la consulta
+        $query->execute();
+
+        // Retorna el ID del trámite si fue exitoso
+        if ($row = $query->fetchColumn()) {
+            return $row;
+        }
+
+        conexionBD::cerrar_conexion();
+    }
+
     public function Listar_Tramite_Seguimiento($id){
         $c = conexionBD::conexionPDO();
         $sql = "CALL SP_LISTAR_TRAMITE_SEGUIMIENTO(?)";

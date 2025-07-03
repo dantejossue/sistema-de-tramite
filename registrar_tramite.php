@@ -113,14 +113,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </p>
 
                                             <p class="text-justify text-dark">
-                                                <strong>NOTA:</strong> La mesa de partes virtual (MPV) <a href="https://tramite.undc.edu.pe/mesadepartes/" target="_blank">https://tramite.undc.edu.pe/mesadepartes/</a> está habilitada todos los días,
+                                                <strong>NOTA:</strong> La mesa de partes virtual (MPV) <a href="https://tramite.undc.edu.pe/mesadepartes/" target="_blank">https://tramite.mixto.edu.pe/mesadepartes/</a> está habilitada todos los días,
                                                 las 24 horas del día y los siete días de la semana para la presentación de documentos.
                                             </p>
 
                                             <p class="text-justify text-dark mb-0"><strong>También puedes hacerlo presencialmente:</strong></p>
                                             <ul class="text-dark">
                                                 <li><strong>Paso 1:</strong> Entrega tus documentos</li>
-                                                <li>Acércate a la mesa de partes del local Administrativo ubicado en "Jr. San Agustín 124 - San Vicente - Cañete", de lunes a viernes de <strong>08:00 a.m. a 01:00 p.m.</strong> y de <strong>2:00 p.m. a 5:00 p.m.</strong></li>
+                                                <li>Acércate a la mesa de partes del local Administrativo ubicado en "Los chemos - San Luis - Cañete", de lunes a viernes de <strong>08:00 a.m. a 01:00 p.m.</strong> y de <strong>2:00 p.m. a 5:00 p.m.</strong></li>
                                             </ul>
 
                                             <p class="text-justify text-dark">

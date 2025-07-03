@@ -155,8 +155,8 @@ function listar_tramite(){
             {"data":"datos_remitente"},
             {"data":"area_origen_id"},
             {"data":"area_destino_id"},
-            {"defaultContent":"<button class='mas btn btn-danger btn-sm'><i class='fa fa-search'></i></button>"},
-            {"defaultContent":"<button class='seguimiento btn btn-success btn-sm'><i class='fa fa-search'></i></button>"},
+            {"defaultContent":"<button class='mas btn btn-danger btn-sm' style='padding: 2px 5px; font-size: 0.75rem;'><i class='fa fa-search'></i></button>"},
+            {"defaultContent":"<button class='seguimiento btn btn-success btn-sm' style='padding: 2px 5px; font-size: 0.75rem;'><i class='fa fa-search'></i></button>"},
             {"data":"tramite_estado",
                 render: function(data, type, row) {
                     let estado = '';
@@ -170,20 +170,17 @@ function listar_tramite(){
                         const diffTime = Math.abs(hoy - fechaInicio);
                         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-                        if (diffDays >= 2) {
-                            badgeExtra = ` <span class="badge bg-danger">+${diffDays} días</span>`;
+                        let claseColor = 'bg-black'; // predeterminado: 0-1 días
+                        if (diffDays === 2) {
+                            claseColor = 'bg-green';
+                        } else if (diffDays === 3) {
+                            claseColor = 'bg-amber';
+                        } else if (diffDays >= 4) {
+                            claseColor = 'bg-danger';
                         }
-                    }
 
-                    if (estadoActual === 'PENDIENTE') {
-                        estado = '<span class="badge bg-warning">PENDIENTE</span>';
-                    } else if (estadoActual === 'RECHAZADO') {
-                        estado = '<span class="badge bg-danger">RECHAZADO</span>';
-                    } else {
-                        estado = '<span class="badge bg-success">ACEPTADO</span>';
+                        return `<span class="badge ${claseColor}" style="font-size: 0.8rem;">PENDIENTE</span>`;
                     }
-
-                    return estado + badgeExtra;
                 }
             },
             {"data":"tramite_estado",
@@ -192,12 +189,12 @@ function listar_tramite(){
                     let areaActual = row.area_destino_id;
 
                     if(data=='PENDIENTE' && areaActual == 'MESA DE PARTES'){
-                        return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp";
+                        return "<button class='accion btn btn-info btn-sm' style='padding: 2px 5px; font-size: 0.75rem;'><i class='fas fa-share-square'></i></button>&nbsp";
                     }else if(data=='PENDIENTE' && areaActual != 'MESA DE PARTES'){
-                        return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp;\
-                                <button class='aceptar btn btn-secondary btn-sm'><i class='fas fa-ellipsis-h text-white'></i></button>";
+                        return "<button class='accion btn btn-info btn-sm' style='padding: 2px 5px; font-size: 0.75rem;'><i class='fas fa-share-square'></i></button>&nbsp;\
+                                <button class='aceptar btn btn-secondary btn-sm' style='padding: 2px 5px; font-size: 0.75rem;'><i class='fas fa-ellipsis-h text-white'></i></button>";
                     }else{
-                        return "<button class='archivar btn btn-warning btn-sm'><i class='fas fa-archive'></i></button>"
+                        return "<button class='archivar btn btn-warning btn-sm' style='padding: 2px 5px; font-size: 0.75rem;'><i class='fas fa-archive'></i></button>"
                     }
                 }
             },

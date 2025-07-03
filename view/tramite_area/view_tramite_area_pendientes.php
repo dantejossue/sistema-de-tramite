@@ -5,6 +5,24 @@ date_default_timezone_set('America/Lima');
 ?>
 <script src="../js/console_tramite_area_pendientes.js?rev=<?php echo time(); ?>"></script>
 <!-- Content Header (Page header) -->
+
+<style>
+  #tabla_tramite {
+    font-size: 0.9rem;
+  }
+    .badge.bg-black {
+    background-color: #343a40; /* Bootstrap dark */
+    color: white;
+  }
+  .badge.bg-green {
+    background-color: #28a745;
+    color: white;
+  }
+  .badge.bg-amber {
+    background-color: #fd7e14;
+    color: white;
+  }
+</style>
 <div class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -70,10 +88,18 @@ date_default_timezone_set('America/Lima');
                 </a>
               </div>
             </div>
-            <table id="tabla_tramite" class="table table-hover table-data">
+            <div class="mb-3 float-right">
+              <strong>Estado Pendiente: &nbsp;</strong>
+              <span style="color: black;"><b> 0 - 1 días Negro </b></span>&nbsp; |&nbsp;
+              <span style="color: green;"><b> 2 días Verde </b></span>&nbsp; |&nbsp;
+              <span style="color: #fd7e14;"><b> 3 días Ámbar </b></span>&nbsp; |&nbsp;
+              <span style="color: red;"><b> 4 días a más Rojo </b></span>
+            </div>
+            <table id="tabla_tramite" class="table table-hover table-data table-sm">
               <thead>
                 <tr>
                   <th rowspan="2" class="align-middle">Nro Seguimiento</th>
+                  <!-- <th rowspan="2" class="align-middle">Fecha Registro</th> -->
                   <th rowspan="2" class="align-middle">Nro Documento</th>
                   <th rowspan="2" class="align-middle">Tipo Documento</th>
                   <th colspan="2" class="align-middle">Remitente</th>
@@ -505,7 +531,7 @@ date_default_timezone_set('America/Lima');
 
 <script>
   $(document).ready(function() {
-    listar_tramite();  // Inicializa la tabla
+    listar_tramite(); // Inicializa la tabla
     $('.js-example-basic-single').select2();
   });
   Cargar_Select_Tipo();

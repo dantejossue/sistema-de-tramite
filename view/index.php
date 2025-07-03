@@ -178,6 +178,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="badge badge-danger" style="font-size: 1rem;">
             <a href="#" class="d-block ml-2"><?php echo "AREA:  " . $_SESSION['S_AREA_NOMBRE']; ?></a>
           </div>
+
+          <input type="text" id="txtprincipalarea" value="<?php echo $_SESSION['S_AREA_ID'] ?>" hidden>
+
         </div>
 
         <!-- Sidebar Menu -->
@@ -253,7 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a onclick="cargar_contenido('contenido_principal','busqueda/view_busqueda.php')" class="nav-link">
                   <i class="nav-icon fas fa-file-contract"></i>
                   <p>
                     Reportes
@@ -277,17 +280,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- Menú Trámites DESPLEGABLE -->
               <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link">
-                  <i class="nav-icon fas fa-file-signature"></i>
+                  <i class="nav-icon fas fa-inbox"></i>
                   <p>
-                    Trámites
+                    Trámites Recibidos
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_pendientes.php')" class="nav-link">
+                    <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_pendientes.php'); abrirPendientes();" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Pendientes</p>
+                      <p>Pendientes
+                        <span class="right badge badge-danger" id="badge_pendientes" style="display:none;">0</span>
+                      </p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -316,7 +321,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   class="nav-link">
                   <i class="nav-icon fas fa-file-signature"></i>
                   <p>
-                    Trámites Recibidos
+                    Trámites
                   </p>
                 </a>
               </li>
@@ -325,7 +330,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   class="nav-link">
                   <i class="nav-icon fas fa-paper-plane"></i>
                   <p>
-                    Trámites Enviados
+                    Trámites Derivados
                   </p>
                 </a>
               </li>
@@ -343,7 +348,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   class="nav-link">
                   <i class="nav-icon fas fa-search-minus"></i>
                   <p>
-                    Seguimiento de Trámites
+                    Rastrear Trámites
                   </p>
                 </a>
               </li>
@@ -652,6 +657,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
           }
         });
       }
+
+      let prevPendientes = 0;
+
+      setInterval(() => {
+        $.ajax({
+          url: '../controller/tramite_area/controlador_verificar_pendientes.php',
+          method: 'POST',
+          success: function(resp) {
+            const data = JSON.parse(resp);
+            if (data.nuevos > prevPendientes) {
+              $('#badge_pendientes').text(data.nuevos).show();
+              const audio = new Audio('../assets/sonidos/new_tramit.mp3');
+              audio.play();
+            }
+            prevPendientes = data.nuevos;
+          }
+        });
+      }, 5000);
+
+
+      function abrirPendientes() {
+        // Carga el módulo normalmente
+        cargar_contenido('contenido_principal', 'tramite_area/view_tramite_area_pendientes.php');
+
+        // Oculta el badge y reinicia el contador
+        $('#badge_pendientes').hide().text('');
+        notificados = 0;
+      }
+
     <?php } ?>
 
     // Al hacer clic en cualquier enlace del sidebar, quitamos la clase 'active' de todos y se la asignamos solo al clickeado
