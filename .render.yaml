@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: tramite-web
+    env: docker
+    plan: free
+    repo: https://github.com/dantejossue/sistema-de-tramite.git
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_HOST
+        value: tramite-db
+      - key: DB_PORT
+        value: 3306
+      - key: DB_NAME
+        value: sis_tramite
+      - key: DB_USER
+        value: root
+      - key: DB_PASSWORD
+        value: admin
+
+  - type: privateService
+    name: tramite-db
+    env: docker
+    plan: free
+    repo: https://github.com/dantejossue/sistema-de-tramite.git
+    dockerfilePath: ./mysql.Dockerfile
+
+   - type: web
+    name: phpmyadmin
+    env: docker
+    plan: free
+    repo: https://github.com/dantejossue/sistema-de-tramite.git
+    dockerfilePath: ./phpmyadmin.Dockerfile

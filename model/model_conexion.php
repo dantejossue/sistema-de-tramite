@@ -9,10 +9,10 @@ class conexionBD{
     //Función o método para conectarse a la base de datos con PDO
     public function conexionPDO(){
 
-        $host = 'db';
-        $db = 'sis_tramite';
-        $user = 'admin';
-        $password = 'admin';
+        $host = getenv("DB_HOST");
+        $db = getenv("DB_NAME");
+        $user = getenv("DB_USER");
+        $password = getenv("DB_PASSWORD");
         
         try{ //Manejo de excepciones
 

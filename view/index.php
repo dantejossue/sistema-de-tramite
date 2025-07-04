@@ -658,7 +658,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
       }
 
-      let prevPendientes = 0;
+      let ultimoTramiteNotificado = null;
 
       setInterval(() => {
         $.ajax({
@@ -666,24 +666,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
           method: 'POST',
           success: function(resp) {
             const data = JSON.parse(resp);
-            if (data.nuevos > prevPendientes) {
+
+            // Solo si hay uno nuevo y su ID es diferente
+            if (data.nuevos > 0 && data.ultimo_id !== ultimoTramiteNotificado) {
+              ultimoTramiteNotificado = data.ultimo_id;
+
               $('#badge_pendientes').text(data.nuevos).show();
               const audio = new Audio('../assets/sonidos/new_tramit.mp3');
               audio.play();
             }
-            prevPendientes = data.nuevos;
           }
         });
       }, 5000);
 
-
       function abrirPendientes() {
-        // Carga el módulo normalmente
         cargar_contenido('contenido_principal', 'tramite_area/view_tramite_area_pendientes.php');
-
-        // Oculta el badge y reinicia el contador
         $('#badge_pendientes').hide().text('');
-        notificados = 0;
+        ultimoTramiteNotificado = null; // Reiniciar al revisar la bandeja
       }
 
     <?php } ?>
