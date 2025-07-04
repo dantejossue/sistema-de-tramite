@@ -14,7 +14,10 @@ class conexionBD{
         $user = getenv("DB_USER");
         $password = getenv("DB_PASSWORD");
         
+        
         try{ //Manejo de excepciones
+
+            var_dump($host, $db, $user, $password); // Para depurar
 
             //Crear la conexion con PDO
             $pdo = new PDO("mysql:host=$host;dbname=$db",$user,$password);
