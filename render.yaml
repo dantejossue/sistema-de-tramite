@@ -7,7 +7,7 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_HOST
-        value: tramite-db-6oel.onrender.internal
+        value: tramite-db.internal
       - key: DB_PORT
         value: 3306
       - key: DB_NAME
@@ -17,14 +17,11 @@ services:
       - key: DB_PASSWORD
         value: admin
 
-  - type: web
+  - type: private
     name: tramite-db
     env: docker
-    plan: free
     repo: https://github.com/dantejossue/sistema-de-tramite.git
     dockerfilePath: ./mysql.Dockerfile
-    autoDeploy: false
-    healthCheckPath: /
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         value: admin
@@ -39,7 +36,6 @@ services:
     dockerfilePath: ./phpmyadmin.Dockerfile
     envVars:
       - key: PMA_HOST
-        value: tramite-db-6oel.onrender.internal
+        value: tramite-db.internal
       - key: PMA_PORT
         value: 3306
-
