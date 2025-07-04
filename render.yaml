@@ -7,7 +7,7 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_HOST
-        value: tramite-db
+        value: tramite-db-6oel.onrender.internal
       - key: DB_PORT
         value: 3306
       - key: DB_NAME
@@ -39,6 +39,7 @@ services:
     dockerfilePath: ./phpmyadmin.Dockerfile
     envVars:
       - key: PMA_HOST
-        value: tramite-db
+        value: tramite-db-6oel.onrender.internal
       - key: PMA_PORT
         value: 3306
+
