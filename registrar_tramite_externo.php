@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 <!-- Main content -->
 
-<div class="content mr-5 ml-5 mt-3">
+<div class="content px-3 px-md-5 mt-3">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -23,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-6 form-group">
+                                    <div class="col-12 col-md-6 form-group">
                                         <label for="" style="font-size:small;">Nº DNI<span class="span-red"> (*)</span></label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="txt_dni" maxlength="8">
@@ -33,33 +33,33 @@
                                             <!-- /btn-group -->
                                         </div>
                                     </div>
-                                    <div class="col-6 form-group">
+                                    <div class="col-12 col-md-6 form-group">
                                         <label for="" style="font-size:small;">NOMBRE<span class="span-red"> (*)</span></label>
                                         <input type="text" class="form-control" id="txt_nom" placeholder="Ingrese su nombre">
                                     </div>
-                                    <div class="col-6 form-group">
+                                    <div class="col-12 col-md-6 form-group">
                                         <label for="" style="font-size:small;">APELLIDO PATERNO<span class="span-red"> (*)</span></label>
                                         <input type="text" class="form-control" id="txt_apepat" placeholder="Ingrese su apellido paterno">
                                     </div>
-                                    <div class="col-6 form-group">
+                                    <div class="col-12 col-md-6 form-group">
                                         <label for="" style="font-size:small;">APELLIDO MATERNO<span class="span-red"> (*)</span></label>
                                         <input type="text" class="form-control" id="txt_apemat" placeholder="Ingrese su apellido materno">
                                     </div>
-                                    <div class="col-6 form-group">
+                                    <div class="col-12 col-md-6 form-group">
                                         <label for="" style="font-size:small;">CELULAR<span class="span-red"> (*)</span></label>
                                         <input type="text" class="form-control" id="txt_celular" maxlength="9" placeholder="Ingrese su número de celular">
                                     </div>
-                                    <div class="col-6 form-group" hidden>
+                                    <div class="col-12 col-md-6 form-group" hidden>
                                         <label for="" style="font-size:small;">TELEFONO FIJO</label>
                                         <input type="text" class="form-control" id="txt_fijo" placeholder="Ingrese su número de teléfono fijo">
                                     </div>
-                                    <div class="col-6 form-group">
+                                    <div class="col-12 col-md-6 form-group">
                                         <label for="" style="font-size:small;">EMAIL<span class="span-red"> (*)</span></label>
                                         <input type="text" class="form-control" id="txt_email" placeholder="Por favor ingrese un correo válido">
                                         <!-- Indicaciones adicionales debajo del campo -->
                                         <small class="form-text text-muted">Recuerda que este será el correo en el que recibirás la respuesta a tu trámite.</small>
                                     </div>
-                                    <div class="col-12 form-group">
+                                    <div class="col-12 col-md-6 form-group">
                                         <label for="" style="font-size:small;">DIRECCION<span class="span-red"> (*)</span></label>
                                         <input type="text" class="form-control" id="txt_dire" placeholder="Ingrese su dirección">
                                     </div>
@@ -67,13 +67,13 @@
                                         <label for="" style="font-size:small;">EN REPRESENTACION<span class="span-red"> (*)</span></label>
                                     </div>
                                     <div class="col-12 row text-center justify-content-center">
-                                        <div class="col-4 form-group clearfix">
+                                        <div class="col-12 col-md-4 form-group clearfix">
                                             <div class="icheck-success d-inline">
                                                 <input type="radio" name="r1" checked value="natural" id="rad_presentacion1" disabled>
                                                 <label for="rad_presentacion1" style="font-weight:normal;font-size:samll">Persona Natural</label>
                                             </div>
                                         </div>
-                                        <div class="col-4 form-group clearfix">
+                                        <div class="col-12 col-md-4 form-group clearfix">
                                             <div class="icheck-success d-inline">
                                                 <input type="radio" name="r1" value="juridica" id="rad_presentacion2" disabled>
                                                 <label for="rad_presentacion2" style="font-weight:normal;font-size:samll">Persona Jurídica</label>
@@ -82,11 +82,11 @@
                                     </div>
                                     <div class="col-12" id="div_juridico" style="display:none">
                                         <div class="row">
-                                            <div class="col-4 form-group">
+                                            <div class="col-12 col-md-4 form-group">
                                                 <label for="" style="font-size:small;">RUC</label>
                                                 <input type="text" class="form-control" id="txt_ruc" placeholder="Ingrese el RUC de la empresa">
                                             </div>
-                                            <div class="col-8 form-group">
+                                            <div class="col-12 col-md-4 form-group">
                                                 <label for="" style="font-size:small;">RAZON SOCIAL</label>
                                                 <input type="text" class="form-control" id="txt_razon" placeholder="Ingrese la razón social de la empresa">
                                             </div>
