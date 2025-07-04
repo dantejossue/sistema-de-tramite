@@ -31,7 +31,7 @@ services:
         value: sis_tramite
 
   # ⚙️ phpMyAdmin (solo para administración y pruebas)
-  - type: web
+  - type: private
     name: phpmyadmin
     env: docker
     plan: free
@@ -39,6 +39,6 @@ services:
     dockerfilePath: ./phpmyadmin.Dockerfile
     envVars:
       - key: PMA_HOST
-        value: tramite-db.internal        # también apunta al servicio privado
+        value: tramite-db       # también apunta al servicio privado
       - key: PMA_PORT
         value: 3306
