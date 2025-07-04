@@ -17,5 +17,15 @@ RUN a2enmod rewrite
 # Cambia permisos si es necesario
 RUN chown -R www-data:www-data /var/www/html
 
+<<<<<<< HEAD
 # Puerto expuesto
 EXPOSE 80
+=======
+# Configura Apache para que escuche en el puerto que Render le pasa
+RUN sed -i 's/Listen 80/Listen ${PORT}/' /etc/apache2/ports.conf && \
+    sed -i 's/:80/:${PORT}/' /etc/apache2/sites-available/000-default.conf
+
+# Exponer el puerto dinámico
+EXPOSE ${PORT}
+
+>>>>>>> ce048a4c10b4207f5d70efe4c5919f8db6ebb2b4
