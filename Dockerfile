@@ -32,7 +32,7 @@ COPY . /var/www/html/
 
 # Copia configuración personalizada de MySQL y archivos SQL
 COPY my.cnf /etc/mysql/conf.d/my.cnf
-COPY mysql-init/ /docker-entrypoint-initdb.d/
+COPY ./mysql-init/*.sql /docker-entrypoint-initdb.d/
 
 # Copia configuración de supervisord para lanzar todos los servicios
 COPY start.sh /start.sh
