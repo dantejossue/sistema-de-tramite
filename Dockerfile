@@ -28,7 +28,7 @@ RUN mkdir -p /usr/share/phpmyadmin && \
     rm -rf phpMyAdmin-5.2.1-all-languages.zip
 
 # Copia el contenido de tu app PHP
-COPY php/ /var/www/html/
+COPY . /var/www/html/
 
 # Copia configuración personalizada de MySQL y archivos SQL
 COPY my.cnf /etc/mysql/conf.d/my.cnf
