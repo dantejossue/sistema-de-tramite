@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 🔁 Forzar reinicialización de MySQL (⚠️ solo si estás seguro)
+rm -rf /var/lib/mysql/*
+
 # Inicializa MySQL si es la primera vez
 if [ ! -d "/var/lib/mysql/mysql" ]; then
     echo "📦 Inicializando MySQL..."
