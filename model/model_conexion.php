@@ -12,7 +12,7 @@ class conexionBD
     {
 
         // Configuración local: MySQL está en el mismo contenedor
-        $host = '127.0.0.1';         // o 'localhost'
+        $host = 'localhost';         // o 'localhost'
         $db   = 'sis_tramite';
         $user = 'root';
         $port = 3306;
