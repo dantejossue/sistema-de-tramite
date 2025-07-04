@@ -1,5 +1,5 @@
 services:
-  # Sistema de Trámite Documentario (visible para todos)
+  # 🌐 Servicio principal del sistema (visible públicamente)
   - type: web
     name: tramite-web
     env: docker
@@ -8,7 +8,7 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_HOST
-        value: tramite-db           # nombre del servicio, resuelve internamente
+        value: tramite-db.internal        # conexión interna segura
       - key: DB_PORT
         value: 3306
       - key: DB_NAME
@@ -18,11 +18,10 @@ services:
       - key: DB_PASSWORD
         value: admin
 
-  # Base de datos MySQL (visible públicamente para pruebas)
-  - type: web                       # 👈 pública para que phpMyAdmin acceda sin problema
+  # 🔒 Servicio de base de datos (interno, no accesible desde fuera)
+  - type: private
     name: tramite-db
     env: docker
-    plan: free
     repo: https://github.com/dantejossue/sistema-de-tramite.git
     dockerfilePath: ./mysql.Dockerfile
     envVars:
@@ -31,7 +30,7 @@ services:
       - key: MYSQL_DATABASE
         value: sis_tramite
 
-  # phpMyAdmin (visible en la web para administración)
+  # ⚙️ phpMyAdmin (solo para administración y pruebas)
   - type: web
     name: phpmyadmin
     env: docker
@@ -40,6 +39,6 @@ services:
     dockerfilePath: ./phpmyadmin.Dockerfile
     envVars:
       - key: PMA_HOST
-        value: tramite-db          # se conecta al nombre lógico del servicio
+        value: tramite-db.internal        # también apunta al servicio privado
       - key: PMA_PORT
         value: 3306
