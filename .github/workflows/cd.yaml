@@ -1,0 +1,13 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚀 Desplegar con Deploy Hook de Render
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
