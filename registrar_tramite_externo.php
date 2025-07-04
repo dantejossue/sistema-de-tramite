@@ -14,7 +14,7 @@
                         <div class="callout callout-success">
                             <!-- AVISO INFORMATIVO -->
                             <div class="alert alert-info mt-3" role="alert">
-                                <strong>Nota:</strong> Si el procedimiento que estás realizando tiene un costo según el <a href="assets/docs/tupa.pdf" target="_blank">TUPA institucional</a>, realiza el pago y consígnalo en el campo “Monto pagado”. El comprobante debe estar dentro del documento adjunto (FUT).
+                                <strong>Nota:</strong> Si el procedimiento que estás realizando tiene un costo según el <a href="assets/docs/tupa 21001.pdf" target="_blank">TUPA institucional</a>, realiza el pago y consígnalo en el campo “Monto pagado”. El comprobante debe estar dentro del documento adjunto (FUT).
                             </div>
                             <div class="card-header">
                                 <h3 class="card-title">

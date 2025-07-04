@@ -86,54 +86,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
-                                <div class="card-body ml-5" style="margin-right: 9rem;">
+                                <div class="card-body px-3 px-md-5">
                                     <form id="formulario1">
+                                        <!-- Tipo de persona -->
                                         <div class="form-group text-center mb-4">
                                             <label class="mr-3 font-weight-bold">Tipo de Persona:</label>
-                                            <div class="icheck-primary d-inline mr-4">
-                                                <input type="radio" id="persona_natural" name="tipo_persona" value="natural">
-                                                <label for="persona_natural">Persona natural</label>
+                                            <div class="d-block d-sm-inline-block mb-2 mb-sm-0 mr-sm-4">
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="persona_natural" name="tipo_persona" value="natural">
+                                                    <label for="persona_natural">Persona natural</label>
+                                                </div>
                                             </div>
-                                            <div class="icheck-primary d-inline">
-                                                <input type="radio" id="persona_juridica" name="tipo_persona" value="juridica">
-                                                <label for="persona_juridica">Persona jurídica</label>
+                                            <div class="d-block d-sm-inline-block">
+                                                <div class="icheck-primary d-inline">
+                                                    <input type="radio" id="persona_juridica" name="tipo_persona" value="juridica">
+                                                    <label for="persona_juridica">Persona jurídica</label>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="form-group d-flex align-items-center">
-                                            <label for="input_dni_ruc" class="font-weight-bold mb-0" style="min-width: 100px;">DNI/RUC:</label>
-                                            <input type="text" class="form-control" id="input_dni_ruc" maxlength="8" placeholder="(Seleccione tipo de persona)" onkeypress="return soloNumeros(event)" required>
+                                        <!-- DNI/RUC -->
+                                        <div class="form-group row">
+                                            <label for="input_dni_ruc" class="col-12 col-md-3 col-form-label font-weight-bold">DNI/RUC:</label>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" class="form-control" id="input_dni_ruc" maxlength="8"
+                                                    placeholder="(Seleccione tipo de persona)" onkeypress="return soloNumeros(event)" required>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group" style="margin-left: 6rem;">
-                                            <p class="mb-1"><strong>Formato único de trámite (FUT):</strong> <a href="assets/docs/fut.pdf" download>Descargar</a></p>
-                                            <p class="text-justify text-dark">
+                                        <!-- Información de FUT -->
+                                        <div class="form-group">
+                                            <p class="mb-1"><strong>Formato único de trámite (FUT):</strong> <a href="assets/docs/fut 21001.pdf" download>Descargar</a></p>
+                                            <p class="text-dark mb-2">
                                                 Para empezar un trámite en la institución y quienes no tengan un documento que anexar, se debe descargar, llenar,
                                                 firmar este FUT y adjuntar en el siguiente formulario para ser considerado un trámite válido.
                                             </p>
-
-                                            <p class="text-justify text-dark">
-                                                <strong>NOTA:</strong> La mesa de partes virtual (MPV) <a href="https://tramite.undc.edu.pe/mesadepartes/" target="_blank">https://tramite.mixto.edu.pe/mesadepartes/</a> está habilitada todos los días,
-                                                las 24 horas del día y los siete días de la semana para la presentación de documentos.
+                                            <p class="text-dark mb-2">
+                                                <strong>NOTA:</strong> La mesa de partes virtual (MPV)
+                                                <a href="https://tramite-web.onrender.com/registrar_tramite.php" target="_blank">https://tramite-web.onrender.com/registrar_tramite.php</a>
+                                                está habilitada todos los días, las 24 horas del día y los siete días de la semana para la presentación de documentos.
                                             </p>
-
-                                            <p class="text-justify text-dark mb-0"><strong>También puedes hacerlo presencialmente:</strong></p>
+                                            <p class="text-dark mb-0"><strong>También puedes hacerlo presencialmente:</strong></p>
                                             <ul class="text-dark">
                                                 <li><strong>Paso 1:</strong> Entrega tus documentos</li>
                                                 <li>Acércate a la mesa de partes del local Administrativo ubicado en "Los chemos - San Luis - Cañete", de lunes a viernes de <strong>08:00 a.m. a 01:00 p.m.</strong> y de <strong>2:00 p.m. a 5:00 p.m.</strong></li>
                                             </ul>
-
-                                            <p class="text-justify text-dark">
+                                            <p class="text-dark">
                                                 Una vez recibida la documentación, se enviará vía correo electrónico un código web para que efectúe el seguimiento a través del módulo de consulta del Sistema de Trámite Documentario.
                                             </p>
-
-                                            <p class="text-justify text-dark">
+                                            <p class="text-dark">
                                                 Para consultar el estado de su trámite ingresará el código web. Asimismo, le brindamos el
                                                 <a href="#" target="_blank">Directorio Institucional</a> con la finalidad que se contacte con el área que corresponda según el seguimiento realizado, teniendo en cuenta el horario de atención.
                                             </p>
                                         </div>
 
-                                        <div class="form-group mt-4" style="margin-left: 6rem;">
+                                        <!-- Aceptar términos -->
+                                        <div class="form-group">
                                             <div class="icheck-success">
                                                 <input type="checkbox" id="acepto_terminos">
                                                 <label for="acepto_terminos">
