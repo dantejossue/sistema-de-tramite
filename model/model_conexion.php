@@ -11,12 +11,11 @@ class conexionBD
     public function conexionPDO()
     {
 
-        // Configuración local: MySQL está en el mismo contenedor
-        $host = '127.0.0.1';         // o 'localhost'
-        $db   = 'sis_tramite';
-        $user = 'root';
-        $port = 3306;
-        $password = 'admin';
+        $host = getenv('DB_HOST');
+        $port = getenv('DB_PORT');
+        $db = getenv('DB_NAME');
+        $user = getenv('DB_USER');
+        $password = getenv('DB_PASSWORD');
 
 
         try { //Manejo de excepciones

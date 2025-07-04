@@ -1,38 +1,21 @@
-# Imagen base PHP + Apache
+# Usa una imagen oficial de PHP con Apache
 FROM php:8.3.16-apache
 
-# Zona horaria
+# Configurar la zona horaria a "America/Lima"
 RUN ln -sf /usr/share/zoneinfo/America/Lima /etc/localtime && \
     echo "America/Lima" > /etc/timezone
 
-# Instala dependencias necesarias
-RUN apt-get update && apt-get install -y \
-    mariadb-server \
-    supervisor \
-    unzip \
-    wget \
-    gnupg \
-    lsb-release \
-    && docker-php-ext-install mysqli pdo pdo_mysql
+# Instala extensiones necesarias (MySQL, GD, ZIP, etc.)
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Habilita mod_rewrite
+# Copia todos los archivos al contenedor
+COPY . /var/www/html/
+
+# Activa mod_rewrite de Apache
 RUN a2enmod rewrite
 
-# Instala phpMyAdmin
-RUN mkdir -p /usr/share/phpmyadmin && \
-    wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.zip && \
-    unzip phpMyAdmin-5.2.1-all-languages.zip -d /usr/share/ && \
-    mv /usr/share/phpMyAdmin-5.2.1-all-languages/* /usr/share/phpmyadmin && \
-    rm -rf phpMyAdmin-5.2.1-all-languages.zip
+# Cambia permisos si es necesario
+RUN chown -R www-data:www-data /var/www/html
 
-# Copia app y configuración
-COPY . /var/www/html/
-COPY start.sh /start.sh
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY ./mysql-init/*.sql /mysql-init/
-
-RUN chmod +x /start.sh
-
+# Puerto expuesto
 EXPOSE 80
-
-CMD ["/start.sh"]
