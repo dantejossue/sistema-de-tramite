@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 -- Asegura que root tenga permisos correctos
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';
 FLUSH PRIVILEGES;
 
 --
