@@ -24,7 +24,7 @@ services:
     repo: https://github.com/dantejossue/sistema-de-tramite.git
     dockerfilePath: ./mysql.Dockerfile
 
-   - type: web
+  - type: web
     name: phpmyadmin
     env: docker
     plan: free
