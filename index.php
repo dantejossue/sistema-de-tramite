@@ -1,4 +1,5 @@
 <?php
+<?php
 require_once 'conexionBD.php';
 $bd = new conexionBD();
 $pdo = $bd->conexionPDO();
@@ -8,6 +9,7 @@ if ($pdo) {
 } else {
     echo "❌ Error de conexión.";
 }
+?>
 
 session_start(); //Esta función inicia una sesión o recupera una sesión existente.
 
