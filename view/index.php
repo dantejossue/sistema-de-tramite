@@ -255,14 +255,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a onclick="cargar_contenido('contenido_principal','reportes/reportes.php')" class="nav-link">
                   <i class="nav-icon fas fa-file-contract"></i>
                   <p>
                     Reportes
                   </p>
                 </a>
-              </li>
+              </li> -->
             <?php
             }
             ?>
