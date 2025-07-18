@@ -196,9 +196,9 @@ function listar_tramite(){
                     }else if(data=='PENDIENTE' && areaActual != 'MESA DE PARTES'){
                         return "<button class='accion btn btn-info btn-sm'><i class='fas fa-share-square'></i></button>&nbsp;\
                                 <button class='aceptar btn btn-secondary btn-sm'><i class='fas fa-ellipsis-h text-white'></i></button>";
-                    }else{
-                        return "<button class='archivar btn btn-warning btn-sm'><i class='fas fa-archive'></i></button>"
-                    }
+                    } //else{
+                    //     return "<button class='archivar btn btn-warning btn-sm'><i class='fas fa-archive'></i></button>"
+                    // }
                 }
             },
         ],

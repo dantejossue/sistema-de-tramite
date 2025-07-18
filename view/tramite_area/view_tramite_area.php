@@ -333,7 +333,7 @@ date_default_timezone_set('America/Lima');
               <label>Acción: </label><span class="span-red"> (*)</span>
               <select class="select-new" id="select_accion">
                 <option value="DERIVAR">DERIVAR</option>
-                <option value="ARCHIVAR">ARCHIVAR</option>
+                <!-- <option value="ARCHIVAR">ARCHIVAR</option> -->
               </select>
             </div>
           </div>

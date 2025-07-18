@@ -307,12 +307,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <p>Rechazados</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_archivados.php')" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Archivados</p>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
 

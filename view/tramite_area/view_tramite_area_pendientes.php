@@ -332,7 +332,7 @@ date_default_timezone_set('America/Lima');
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header" id="modal-header">
-        <h4 class="modal-title modal-title-h4" id="modal-title">Derivar/Finalizar Trámite:</h4>&nbsp;&nbsp;
+        <h4 class="modal-title modal-title-h4" id="modal-title">Derivar Trámite:</h4>&nbsp;&nbsp;
         <h4 id="nro_expe2" class="modal-title modal-title-h4" style="color: brown;"></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
@@ -357,7 +357,7 @@ date_default_timezone_set('America/Lima');
               <label>Acción: </label><span class="span-red"> (*)</span>
               <select class="select-new" id="select_accion">
                 <option value="DERIVAR">DERIVAR</option>
-                <option value="ARCHIVAR">ARCHIVAR</option>
+                <!-- <option value="ARCHIVAR">ARCHIVAR</option> -->
               </select>
             </div>
           </div>

@@ -81,7 +81,7 @@ date_default_timezone_set('America/Lima');
                   <th rowspan="2" class="align-middle">Mas datos</th>
                   <th rowspan="2" class="align-middle">Seguimiento</th>
                   <th rowspan="2" class="align-middle">Estado Documento</th>
-                  <th rowspan="2" class="align-middle">Acción</th>
+                  <!-- <th rowspan="2" class="align-middle">Acción</th> -->
                 </tr>
                 <tr>
                   <th>DNI</th>
