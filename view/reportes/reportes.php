@@ -26,11 +26,7 @@
                     <!-- /.card-body -->
                     <div class="card-body">
                         <div class="container">
-                            <iframe title="Reporte de Trámites"
-                                width="100%" height="700"
-                                src="https://app.powerbi.com/links/oY0xnN_z52?ctid=abcb703a-3dbf-4405-83f1-1bfb0fd5fba4&pbi_source=linkShare"
-                                frameborder="0" allowFullScreen="true">
-                            </iframe>
+                            <iframe title="reporte_tramites" width="100%" height="700" src="https://app.powerbi.com/reportEmbed?reportId=f638ea8b-2503-4b12-86e2-7ee176d4b288&autoAuth=true&ctid=abcb703a-3dbf-4405-83f1-1bfb0fd5fba4" frameborder="0" allowFullScreen="true"></iframe>
                         </div>
                     </div>
                     <!-- /.card-body -->
