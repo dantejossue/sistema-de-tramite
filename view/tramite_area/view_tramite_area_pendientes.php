@@ -565,4 +565,4 @@ date_default_timezone_set('America/Lima');
     // Redirigir al usuario al reporte
     window.open(url, '_blank');
   }
-</script>
+</script> 
