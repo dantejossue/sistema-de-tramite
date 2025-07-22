@@ -6,12 +6,12 @@ services:
     dockerfilePath: Dockerfile
     envVars:
       - key: DB_HOST
-        value: 119.8.150.18
+        sync: false
       - key: DB_PORT
-        value: 3306
+        sync: false
       - key: DB_NAME
-        value: sis_tramite
+        sync: false
       - key: DB_USER
-        value: root
+        sync: false
       - key: DB_PASSWORD
-        value: Passw0rd_undc
+        sync: false
