@@ -266,7 +266,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <?php
             }
             ?>
-            <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)') { ?>
+            <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)' && $_SESSION['S_AREA_NOMBRE'] != 'MESA DE PARTES') { ?>
               <li class="nav-item">
                 <a href="index.php"
                   class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
@@ -322,6 +322,65 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="nav-icon fas fa-file-signature"></i>
                   <p>
                     Trámites
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_enviados.php')"
+                  class="nav-link">
+                  <i class="nav-icon fas fa-paper-plane"></i>
+                  <p>
+                    Trámites Derivados
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_registro.php')"
+                  class="nav-link">
+                  <i class="nav-icon fas fa-plus"></i>
+                  <p>
+                    Nuevo Trámite
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_seguimiento.php')"
+                  class="nav-link">
+                  <i class="nav-icon fas fa-search-minus"></i>
+                  <p>
+                    Rastrear Trámites
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','reportes/reportes.php')"
+                  class="nav-link">
+                  <i class="nav-icon fas fa-file-contract"></i>
+                  <p>
+                    Reportes
+                  </p>
+                </a>
+              </li>
+            <?php
+            }
+            ?>
+
+            <!-- Para secretario y mesa de partes -->
+            <?php if ($_SESSION['S_ROL'] == 'SECRETARIO(A)' && $_SESSION['S_AREA_NOMBRE'] == 'MESA DE PARTES') { ?>
+              <li class="nav-item">
+                <a href="index.php"
+                  class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
+                  <i class="nav-icon fas fa-home"></i>
+                  <p>
+                    Inicio
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a onclick="cargar_contenido('contenido_principal','tramite_area/view_tramite_area_pendientes.php'); abrirPendientes();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Trámites
+                    <span class="right badge badge-danger" id="badge_pendientes" style="display:none;">0</span>
                   </p>
                 </a>
               </li>
