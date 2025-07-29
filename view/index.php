@@ -717,7 +717,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
       }
 
-      let ultimoTramiteNotificado = null;
+      // Recuperar el último conteo desde localStorage
+      let conteoAnterior = parseInt(localStorage.getItem('conteoPendientes')) || 0;
 
       setInterval(() => {
         $.ajax({
@@ -725,23 +726,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
           method: 'POST',
           success: function(resp) {
             const data = JSON.parse(resp);
+            const conteoActual = parseInt(data.nuevos);
 
-            // Solo si hay uno nuevo y su ID es diferente
-            if (data.nuevos > 0 && data.ultimo_id !== ultimoTramiteNotificado) {
-              ultimoTramiteNotificado = data.ultimo_id;
+            if (conteoActual > conteoAnterior) {
+              const nuevosTramites = conteoActual - conteoAnterior;
 
-              $('#badge_pendientes').text(data.nuevos).show();
+              // Mostrar badge actualizado
+              $('#badge_pendientes').text(conteoActual).show();
+
+              // Reproducir sonido
               const audio = new Audio('../assets/sonidos/new_tramit.mp3');
               audio.play();
+
+              // Guardar nuevo conteo
+              localStorage.setItem('conteoPendientes', conteoActual);
+              conteoAnterior = conteoActual;
+            } else if (conteoActual === 0) {
+              $('#badge_pendientes').hide().text('');
+              localStorage.setItem('conteoPendientes', 0);
+              conteoAnterior = 0;
+            } else {
+              // Solo actualizar el badge si hay trámites pero no nuevos
+              $('#badge_pendientes').text(conteoActual).show();
             }
           }
         });
       }, 5000);
 
+      // Cuando abre el módulo de pendientes
       function abrirPendientes() {
         cargar_contenido('contenido_principal', 'tramite_area/view_tramite_area_pendientes.php');
         $('#badge_pendientes').hide().text('');
-        ultimoTramiteNotificado = null; // Reiniciar al revisar la bandeja
+        // Aquí NO reiniciamos el conteoAnterior para mantener seguimiento
       }
 
     <?php } ?>
