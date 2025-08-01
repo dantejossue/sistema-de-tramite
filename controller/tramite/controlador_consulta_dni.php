@@ -1,8 +1,14 @@
 <?php
+
+require_once __DIR__ . '/../vendor/autoload.php'; // Ajusta según dónde está este archivo
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../'); // Ajusta según ubicación de tu .env
+$dotenv->load();
+
 header("Content-Type: application/json");
 
 // API Key y Validación del DNI
-$token = 'apis-token-13599.sHnS8QFovIGajCqWtE5eKhOKNWyMeG2n';
+$token = $_ENV['API_TOKEN']; // Token desde .env
 $dni = isset($_GET['dni']) ? $_GET['dni'] : null;
 
 if (!$dni || strlen($dni) != 8 || !is_numeric($dni)) {
